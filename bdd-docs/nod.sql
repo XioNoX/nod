@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 21, 2012 at 12:11 PM
+-- Generation Time: Mar 22, 2012 at 04:10 PM
 -- Server version: 5.1.61
 -- PHP Version: 5.3.6-13ubuntu3.6
 
@@ -119,6 +119,19 @@ CREATE TABLE IF NOT EXISTS `popularite` (
   `popularite_note` int(11) NOT NULL,
   `popularite_id_poi` int(11) NOT NULL,
   PRIMARY KEY (`popularite_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tan_arrets`
+--
+
+CREATE TABLE IF NOT EXISTS `tan_arrets` (
+  `arret_id` int(11) NOT NULL AUTO_INCREMENT,
+  `arret_ligne` int(11) NOT NULL,
+  `nom_arret` varchar(255) NOT NULL,
+  PRIMARY KEY (`arret_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
