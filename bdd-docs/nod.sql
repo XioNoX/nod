@@ -26,13 +26,13 @@ SET time_zone = "+00:00";
 -- Table structure for table `contact`
 --
 
-CREATE TABLE IF NOT EXISTS `contact` (
-  `contact_id` int(11) NOT NULL AUTO_INCREMENT,
-  `contact_telephone` int(11) NOT NULL,
-  `contact_email` int(11) NOT NULL,
-  `contact_site_web` int(11) NOT NULL,
-  PRIMARY KEY (`contact_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+CREATE TABLE IF NOT EXISTS `contacts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `phone` int(11) NOT NULL,
+  `email` int(11) NOT NULL,
+  `web_site` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -41,53 +41,57 @@ CREATE TABLE IF NOT EXISTS `contact` (
 --
 
 CREATE TABLE IF NOT EXISTS `gps` (
-  `gps_id` int(11) NOT NULL AUTO_INCREMENT,
-  `gps_longitude` float NOT NULL,
-  `gps_latitude` float NOT NULL,
-  `gps_adresse` varchar(255) NOT NULL,
-  `gps_zip` int(11) NOT NULL,
-  `gps_commune` varchar(255) NOT NULL,
-  PRIMARY KEY (`gps_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `longitude` float NOT NULL,
+  `latitude` float NOT NULL,
+  `adress` varchar(255) NOT NULL,
+  `zip` int(11) NOT NULL,
+  `town` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `horaires`
+-- Table structure for table `schedules`
 --
 
-CREATE TABLE IF NOT EXISTS `horaires` (
-  `horaires_id` int(11) NOT NULL AUTO_INCREMENT,
-  `horaire_libelle` int(11) NOT NULL,
-  `horaire_date_debut_periode` date NOT NULL,
-  `horaire_date_fin_periode` date NOT NULL,
-  `horaire_heure_debut` time NOT NULL,
-  `horaire_heure_fin` time NOT NULL,
-  `horaire_jours_semaine` varchar(7) NOT NULL,
-  `horaire_tarifs_id` int(11) NOT NULL,
-  PRIMARY KEY (`horaires_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+CREATE TABLE IF NOT EXISTS `schedule` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `label` int(11) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `start_time` time NOT NULL,
+  `end_time` time NOT NULL,
+  `week_day` varchar(7) NOT NULL,
+  `price_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `parcs`
+-- Table structure for table `parks`
 --
 
-CREATE TABLE IF NOT EXISTS `parcs` (
-  `parc_id` int(11) NOT NULL AUTO_INCREMENT,
-  `parc_jeux` tinyint(1) NOT NULL,
-  `parc_mobilier_pique_nique` tinyint(1) NOT NULL,
-  `parc_pataugeoire` tinyint(1) NOT NULL,
-  `parc_fontaine` tinyint(1) NOT NULL,
-  `parc_sanitaire` tinyint(1) NOT NULL,
-  `parc_abri` tinyint(1) NOT NULL,
-  `parc_acces_handicapes` tinyint(1) NOT NULL,
-  `parc_collection_vegetale` tinyint(1) NOT NULL,
-  `parc_gardien` tinyint(1) NOT NULL,
-  `parc_jardin_clos` tinyint(1) NOT NULL,
-  PRIMARY KEY (`parc_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+CREATE TABLE IF NOT EXISTS `parks` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type_id` int(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `parks`
+--
+
+CREATE TABLE IF NOT EXISTS `park_types` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `label` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
 
 -- --------------------------------------------------------
 
@@ -95,60 +99,60 @@ CREATE TABLE IF NOT EXISTS `parcs` (
 -- Table structure for table `point_of_interest`
 --
 
-CREATE TABLE IF NOT EXISTS `point_of_interest` (
-  `poi_id` int(11) NOT NULL AUTO_INCREMENT,
-  `poi_libelle` varchar(255) NOT NULL,
-  `poi_description` text NOT NULL,
-  `poi_id_tan_arret_proximite` int(11) NOT NULL,
-  `poi_contact_id` int(11) NOT NULL,
-  `poi_gps_id` int(11) NOT NULL,
-  `poi_type` varchar(80) NOT NULL,
-  `poi_horaire` int(11) NOT NULL,
-  `poi_horaire_exc` int(11) NOT NULL,
-  PRIMARY KEY (`poi_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+CREATE TABLE IF NOT EXISTS `points_of_interest` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `label` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `id_tan_stop_proximity` int(11) NOT NULL,
+  `contact_id` int(11) NOT NULL,
+  `gps_id` int(11) NOT NULL,
+  `type` varchar(80) NOT NULL,
+  `schedule` int(11) NOT NULL,
+  `schedule_exc` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `popularite`
+-- Table structure for table `popularity`
 --
 
-CREATE TABLE IF NOT EXISTS `popularite` (
-  `popularite_id` int(11) NOT NULL AUTO_INCREMENT,
-  `popularite_note` int(11) NOT NULL,
-  `popularite_id_poi` int(11) NOT NULL,
-  PRIMARY KEY (`popularite_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+CREATE TABLE IF NOT EXISTS `popularities` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `note` int(11) NOT NULL,
+  `poi_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tan_arrets`
+-- Table structure for table `tan_stops`
 --
 
-CREATE TABLE IF NOT EXISTS `tan_arrets` (
-  `arret_id` int(11) NOT NULL AUTO_INCREMENT,
-  `arret_ligne` int(11) NOT NULL,
-  `nom_arret` varchar(255) NOT NULL,
-  `arret_longitude` float NOT NULL,
-  `arret_latitude` float NOT NULL,
-  PRIMARY KEY (`arret_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+CREATE TABLE IF NOT EXISTS `tan_stops` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ligne` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `longitude` float NOT NULL,
+  `latitude` float NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tarifs`
+-- Table structure for table `prices`
 --
 
-CREATE TABLE IF NOT EXISTS `tarifs` (
-  `tarif_id` int(11) NOT NULL AUTO_INCREMENT,
-  `tarif_montant_individuel` int(11) NOT NULL,
-  `tarif_montant_groupe` int(11) NOT NULL,
-  `tarif_montant_abonnement` int(11) NOT NULL,
-  PRIMARY KEY (`tarif_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+CREATE TABLE IF NOT EXISTS `prices` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `individual_fee` int(11) NOT NULL,
+  `group_fee` int(11) NOT NULL,
+  `subscription_fee` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
