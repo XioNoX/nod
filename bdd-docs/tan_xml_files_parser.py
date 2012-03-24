@@ -33,7 +33,7 @@ def create_filedata_for_stations(xml_filename, directory_name):
     station_longitude = elem.findtext('longitude')
     station_latitude = elem.findtext('latitude')
     if ancient_station_name != station_name:
-      datafile.write('INSERT INTO "tan_arrets"("arret_ligne", "nom_arret", "arret_longitude", "arret_latitude") VALUES ('+linenumber+',"'+station_name+'",'+station_longitude+','+station_latitude+');\n')
+      datafile.write('INSERT INTO `tan_arrets`(`arret_ligne`, `nom_arret`, `arret_longitude`, `arret_latitude`) VALUES ('+linenumber+',"'+station_name+'",'+station_longitude+','+station_latitude+');\n')
     ancient_station_name = station_name
     
     
