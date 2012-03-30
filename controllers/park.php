@@ -5,8 +5,8 @@
 /*called for the url /parks.
   lists all the parks in the database */
     static function index() {
-        echo "lets go";
-     }
+#TODO get poi and link it with the table park
+    }
      
 /*called for the url /parks/(id)
   return a single park */
