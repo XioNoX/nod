@@ -21,9 +21,9 @@ def parse_file_csv(filename,delimiter='\n', separator=';'):
   for line in lines:
     if i!=1:
       aline = line.split(';')
-      datafile.write('INSERT INTO `gps`(`gps_longitude`, `gps_latitude`, `gps_address`, `gps_zip`, `gps_city`) VALUES ('+aline[3]+','+aline[4]+',"'+aline[2]+'",44000,"Nantes");\n')
-      datafile.write('INSERT INTO `point_of_interest`(`poi_label`, `poi_description`,`poi_gps_id`, `poi_type`, `poi_type_id_in_table`) VALUES ("'+aline[1]+'","'+(aline[17].rstrip()).replace('"',"'")+'",'+str(i-1)+',"parks",'+str(i-1)+');\n')
-      datafile.write('INSERT INTO `parks`(`park_games`) VALUES (0);\n')
+      datafile.write('INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES ('+aline[3]+','+aline[4]+',"'+aline[2]+'",44000,"Nantes");\n')
+      datafile.write('INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("'+aline[1]+'","'+(aline[17].rstrip()).replace('"',"'")+'",'+str(i-1)+',"parks",'+str(i-1)+');\n')
+      datafile.write('INSERT INTO `parks`(`games`) VALUES (0);\n')
     i+=1
   print "done"
 
