@@ -57,7 +57,6 @@ COLLATE = utf8_bin;
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `nod`.`parks` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
-  `name`  VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NOT NULL ,
   `games` TINYINT(1) NOT NULL ,
   `parc_picnic_furniture` TINYINT(1) NOT NULL ,
   `wading_pool` TINYINT(1) NOT NULL ,
