@@ -5,10 +5,12 @@
 /*called for the url /parks.
   lists all the parks in the database */
     static function index() {
+      $count = isset($_GET["count"]) && is_numeric($_GET["count"]) ? F3::get('GET["count"]') : 25;
       $parks = DB::sql("SELECT * FROM points_of_interest 
                         INNER JOIN parks
                         ON parks.id = points_of_interest.type_id_in_table
-                        WHERE type='park'");
+                        WHERE type='park'
+                        LIMIT $count");
       echo json_encode($parks);
     }
      
