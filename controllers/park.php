@@ -5,7 +5,11 @@
 /*called for the url /parks.
   lists all the parks in the database */
     static function index() {
-#TODO get poi and link it with the table park
+      $parks = DB::sql("SELECT * FROM points_of_interest 
+                        INNER JOIN parks
+                        ON parks.id = points_of_interest.type_id_in_table
+                        WHERE type='park'");
+      echo json_encode($parks);
     }
      
 /*called for the url /parks/(id)
