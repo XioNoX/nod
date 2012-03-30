@@ -1,169 +1,197 @@
--- phpMyAdmin SQL Dump
--- version 3.4.5deb1
--- http://www.phpmyadmin.net
---
--- Host: localhost
--- Generation Time: Mar 24, 2012 at 05:37 PM
--- Server version: 5.1.61
--- PHP Version: 5.3.6-13ubuntu3.6
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
+USE `mydb` ;
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- Database: `nod`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `contact`
---
-
-CREATE TABLE IF NOT EXISTS `contacts` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `phone` int(11) NOT NULL,
-  `email` int(11) NOT NULL,
-  `website` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `fees`
---
-
-CREATE TABLE IF NOT EXISTS `fees` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `individual` int(11) NOT NULL,
-  `group` int(11) NOT NULL,
-  `subscription` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `gps`
---
-
-CREATE TABLE IF NOT EXISTS `gps` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `longitude` float NOT NULL,
-  `latitude` float NOT NULL,
-  `address` varchar(255) COLLATE utf8_bin NOT NULL,
-  `zip` int(11) NOT NULL,
-  `city` varchar(255) COLLATE utf8_bin NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `parks`
---
-
-CREATE TABLE IF NOT EXISTS `parks` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `games` tinyint(1) NOT NULL,
-  `parc_picnic_furniture` tinyint(1) NOT NULL,
-  `wading_pool` tinyint(1) NOT NULL,
-  `fountain` tinyint(1) NOT NULL,
-  `restrooms` tinyint(1) NOT NULL,
-  `shed` tinyint(1) NOT NULL,
-  `disabled_access` tinyint(1) NOT NULL,
-  `vegetal_collection` tinyint(1) NOT NULL,
-  `keeper` tinyint(1) NOT NULL,
-  `parc_close_garden` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `point_of_interest`
---
-
-CREATE TABLE IF NOT EXISTS `points_of_interest` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `label` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `description` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `contact_id` int(11) NOT NULL,
-  `gps_id` int(11) NOT NULL,
-  `type` varchar(80) NOT NULL,
-  `type_id_in_table` int(11) NOT NULL,
-  `schedule` int(11) NOT NULL,
-  `schedule_exc` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `popularity`
---
-
-CREATE TABLE IF NOT EXISTS `popularities` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `rate` int(11) NOT NULL,
-  `poi_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `schedule`
---
-
-CREATE TABLE IF NOT EXISTS `schedules` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `label` varchar(45) COLLATE utf8_bin NOT NULL,
-  `date_start_period` date NOT NULL,
-  `date_end_period` date NOT NULL,
-  `time_start` time NOT NULL,
-  `time_end` time NOT NULL,
-  `days` varchar(7) COLLATE utf8_bin NOT NULL,
-  `fee_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `stops_tan_poi`
---
-
-CREATE TABLE IF NOT EXISTS `tan_stop_poi` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `poi_id` int(11) NOT NULL,
-  `tan_stop_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tan_stops`
---
-
-CREATE TABLE IF NOT EXISTS `tan_stops` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `number_of_line` int(11) NOT NULL,
-  `name_stop` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `longitude` float NOT NULL,
-  `latitude` float NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+-- -----------------------------------------------------
+-- Table `mydb`.`contacts`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `mydb`.`contacts` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `phone` INT(11) NOT NULL ,
+  `email` INT(11) NOT NULL ,
+  `website` INT(11) NOT NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = MyISAM
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin;
 
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+-- -----------------------------------------------------
+-- Table `mydb`.`fees`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `mydb`.`fees` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `individual` INT(11) NOT NULL ,
+  `group` INT(11) NOT NULL ,
+  `subscription` INT(11) NOT NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = MyISAM
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`gps`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `mydb`.`gps` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `longitude` FLOAT NOT NULL ,
+  `latitude` FLOAT NOT NULL ,
+  `address` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NOT NULL ,
+  `zip` INT(11) NOT NULL ,
+  `city` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NOT NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = MyISAM
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`parks`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `mydb`.`parks` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `games` TINYINT(1) NOT NULL ,
+  `parc_picnic_furniture` TINYINT(1) NOT NULL ,
+  `wading_pool` TINYINT(1) NOT NULL ,
+  `fountain` TINYINT(1) NOT NULL ,
+  `restrooms` TINYINT(1) NOT NULL ,
+  `shed` TINYINT(1) NOT NULL ,
+  `disabled_access` TINYINT(1) NOT NULL ,
+  `vegetal_collection` TINYINT(1) NOT NULL ,
+  `keeper` TINYINT(1) NOT NULL ,
+  `parc_close_garden` TINYINT(1) NOT NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = MyISAM
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`points_of_interest`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `mydb`.`points_of_interest` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `label` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NOT NULL ,
+  `description` TEXT CHARACTER SET 'utf8' COLLATE 'utf8_bin' NOT NULL ,
+  `contact_id` INT(11) NOT NULL ,
+  `gps_id` INT(11) NOT NULL ,
+  `type` VARCHAR(80) NOT NULL ,
+  `type_id_in_table` INT(11) NOT NULL ,
+  `schedule` INT(11) NOT NULL ,
+  `schedule_exc` INT(11) NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_points_of_interest_gps1` (`gps_id` ASC) ,
+  INDEX `fk_points_of_interest_contacts1` (`contact_id` ASC) ,
+  CONSTRAINT `fk_points_of_interest_gps1`
+    FOREIGN KEY (`gps_id` )
+    REFERENCES `mydb`.`gps` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_points_of_interest_contacts1`
+    FOREIGN KEY (`contact_id` )
+    REFERENCES `mydb`.`contacts` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = MyISAM
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`popularities`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `mydb`.`popularities` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `rate` INT(11) NOT NULL ,
+  `poi_id` INT(11) NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_popularities_points_of_interest` (`poi_id` ASC) ,
+  CONSTRAINT `fk_popularities_points_of_interest`
+    FOREIGN KEY (`poi_id` )
+    REFERENCES `mydb`.`points_of_interest` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = MyISAM
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`schedules`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `mydb`.`schedules` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `label` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NOT NULL ,
+  `date_start_period` DATE NOT NULL ,
+  `date_end_period` DATE NOT NULL ,
+  `time_start` TIME NOT NULL ,
+  `time_end` TIME NOT NULL ,
+  `days` VARCHAR(7) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NOT NULL ,
+  `fee_id` INT(11) NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_schedules_fees1` (`fee_id` ASC) ,
+  CONSTRAINT `fk_schedules_fees1`
+    FOREIGN KEY (`fee_id` )
+    REFERENCES `mydb`.`fees` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = MyISAM
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`tan_stops`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `mydb`.`tan_stops` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `number_of_line` INT(11) NOT NULL ,
+  `name_stop` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NOT NULL ,
+  `longitude` FLOAT NOT NULL ,
+  `latitude` FLOAT NOT NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = MyISAM
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`tan_stop_poi`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `mydb`.`tan_stop_poi` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `poi_id` INT(11) NOT NULL ,
+  `tan_stop_id` INT(11) NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_tan_stop_poi_points_of_interest1` (`poi_id` ASC) ,
+  INDEX `fk_tan_stop_poi_tan_stops1` (`tan_stop_id` ASC) ,
+  CONSTRAINT `fk_tan_stop_poi_points_of_interest1`
+    FOREIGN KEY (`poi_id` )
+    REFERENCES `mydb`.`points_of_interest` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tan_stop_poi_tan_stops1`
+    FOREIGN KEY (`tan_stop_id` )
+    REFERENCES `mydb`.`tan_stops` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = MyISAM
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin;
+
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
