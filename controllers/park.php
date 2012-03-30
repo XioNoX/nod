@@ -14,9 +14,14 @@
      
 /*called for the url /parks/(id)
   return a single park */
-     static function show() {
-        $id = F3::get('PARAMS["id"]');
-        echo "you have asked for the park ".$id;
+    static function show() {
+      $id = F3::get('PARAMS["id"]');
+      $park = DB::sql("SELECT * FROM points_of_interest 
+                        INNER JOIN parks
+                        ON parks.id = points_of_interest.type_id_in_table
+                        WHERE type='park'
+                        AND parks.id=$id");
+      echo json_encode($park);
      }
     
   }
