@@ -2,7 +2,8 @@
 ###################
 
 
-*.py~
+*~
+*.swp
 
 #for the mac users ;)
 .DS_Store
