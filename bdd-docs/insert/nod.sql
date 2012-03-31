@@ -11,8 +11,8 @@ USE `nod` ;
 CREATE  TABLE IF NOT EXISTS `nod`.`contacts` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `phone` INT(11) NOT NULL ,
-  `email` INT(11) NOT NULL ,
-  `website` INT(11) NOT NULL ,
+  `email` varchar(255) COLLATE utf8_bin NOT NULL,
+  `website` varchar(255) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`) )
 ENGINE = MyISAM
 AUTO_INCREMENT = 1

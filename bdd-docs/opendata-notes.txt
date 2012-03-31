@@ -1,0 +1,5 @@
+- parcs.csv : valeurs signifiant Vrai sont : nom de la colonne, ou Bla parfois. 
+- Positions GPS parfois avec  virgules, parfois avec points. (obligé de remplacer ',' par '.' pour insertion  dans base de données)
+- Numéros de téléphone parfois à 10 chiffres, parfois à 9
+- Certains liens internet pour contact ne contiennent que "http"
+- Certains numéros de téléphone sont justes 0
