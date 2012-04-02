@@ -5,14 +5,8 @@ require_once "controllers/poi.php";
 require_once "controllers/park.php";
 require_once "lib/base.php";
 
-F3::set('DEBUG',3);
-F3::set('DB',
-  new DB(
-    'mysql:host=localhost;port=8889;dbname=nod',
-    'root',
-    'root'
-   )
-  );
+require_once "config.php";
+
 #Defining all the routes of the application 
 F3::route('GET /','home::index');
 
