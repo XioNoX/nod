@@ -1,0 +1,13 @@
+<?php
+
+F3::set('DB',
+  new DB(
+    'mysql:host=localhost;port=8889;dbname=nod',
+    'root',
+    'root'
+   )
+  );
+
+F3::set('DEBUG',3);
+
+?>
