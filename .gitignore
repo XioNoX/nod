@@ -1,5 +1,7 @@
 # saved py files  #
 ###################
+config.php
+*.*~
 *.py~
 *~
 *.swp

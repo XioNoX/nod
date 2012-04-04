@@ -85,8 +85,6 @@ CREATE  TABLE IF NOT EXISTS `nod`.`points_of_interest` (
   `gps_id` INT(11) NOT NULL ,
   `type` VARCHAR(80) NOT NULL ,
   `type_id_in_table` INT(11) NOT NULL ,
-  `schedule` INT(11) NOT NULL ,
-  `schedule_exc` INT(11) NOT NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_points_of_interest_gps1` (`gps_id` ASC) ,
   INDEX `fk_points_of_interest_contacts1` (`contact_id` ASC) ,
@@ -127,6 +125,27 @@ COLLATE = utf8_bin;
 
 
 -- -----------------------------------------------------
+-- Table `nod`.`comments`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `nod`.`comments` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `from` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NOT NULL ,
+  `content` TEXT CHARACTER SET 'utf8' COLLATE 'utf8_bin' NOT NULL ,
+  `poi_id` INT(11) NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_comments_points_of_interest` (`poi_id` ASC) ,
+  CONSTRAINT `fk_comments_points_of_interest`
+    FOREIGN KEY (`poi_id` )
+    REFERENCES `nod`.`points_of_interest` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = MyISAM
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin;
+
+
+-- -----------------------------------------------------
 -- Table `nod`.`schedules`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `nod`.`schedules` (
@@ -137,14 +156,7 @@ CREATE  TABLE IF NOT EXISTS `nod`.`schedules` (
   `time_start` TIME NOT NULL ,
   `time_end` TIME NOT NULL ,
   `days` VARCHAR(7) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NOT NULL ,
-  `fee_id` INT(11) NOT NULL ,
-  PRIMARY KEY (`id`) ,
-  INDEX `fk_schedules_fees1` (`fee_id` ASC) ,
-  CONSTRAINT `fk_schedules_fees1`
-    FOREIGN KEY (`fee_id` )
-    REFERENCES `nod`.`fees` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`id`))
 ENGINE = MyISAM
 AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8
@@ -185,6 +197,57 @@ CREATE  TABLE IF NOT EXISTS `nod`.`tan_stop_poi` (
   CONSTRAINT `fk_tan_stop_poi_tan_stops1`
     FOREIGN KEY (`tan_stop_id` )
     REFERENCES `nod`.`tan_stops` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = MyISAM
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin;
+
+-- -----------------------------------------------------
+-- Table `nod`.`schedule_poi`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `nod`.`schedule_poi` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `poi_id` INT(11) NOT NULL ,
+  `schedule_id` INT(11) NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_schedule_poi_points_of_interest1` (`poi_id` ASC) ,
+  INDEX `fk_schedule_poi_schedules1` (`schedule_id` ASC) ,
+  CONSTRAINT `fk_schedule_poi_points_of_interest1`
+    FOREIGN KEY (`poi_id` )
+    REFERENCES `nod`.`points_of_interest` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_schedule_poi_schedules1`
+    FOREIGN KEY (`schedule_id` )
+    REFERENCES `nod`.`schedules` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = MyISAM
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin;
+
+-- -----------------------------------------------------
+-- Table `nod`.`fee_poi`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `nod`.`fee_poi` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `poi_id` INT(11) NOT NULL ,
+  `name_fee` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NOT NULL ,
+  `fee_id` INT(11) NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_fee_poi_points_of_interest1` (`poi_id` ASC) ,
+  INDEX `fk_fee_poi_fees1` (`fee_id` ASC) ,
+  CONSTRAINT  `fk_fee_poi_points_of_interest1`
+    FOREIGN KEY (`poi_id` )
+    REFERENCES `nod`.`points_of_interest` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_fee_poi_fees1`
+    FOREIGN KEY (`fee_id` )
+    REFERENCES `nod`.`fee` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = MyISAM
