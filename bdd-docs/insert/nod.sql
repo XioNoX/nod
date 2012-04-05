@@ -19,6 +19,31 @@ AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_bin;
 
+-- -----------------------------------------------------
+-- Table `nod`.`culture_places`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `nod`.`culture_places` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `indoor` INT(1) NOT NULL,
+  PRIMARY KEY (`id`) )
+ENGINE = MyISAM
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin;
+
+
+-- -----------------------------------------------------
+-- Table `nod`.`bars`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `nod`.`bars` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `dancefloor` INT(1) NOT NULL,
+  PRIMARY KEY (`id`) )
+ENGINE = MyISAM
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin;
+
 
 -- -----------------------------------------------------
 -- Table `nod`.`fees`
