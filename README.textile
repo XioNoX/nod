@@ -3,10 +3,12 @@ h1. Note sur les formulaires
 J'ai commencé à mettre en place un formulaire (tout con pour le moment) pour demander ce que le gars veut faire. Il y a plusieurs petites choses à savoir sur le formulaire que j'ai fais : 
   * Ce formulaire envoie les données en asynchrone
   * Vous allez me dire qu'il n'y a rien sur le formulaire qui dit qu'il est asynchrone (du genre un onsubmit=...)
-  * C'est là où est l'astuce, grace à HTML5, j'ai mis un attribut "data-remote=true"<
+  * C'est là où est l'astuce, grace à HTML5, j'ai mis un attribut "data-remote=true"
   * Ainsi c'est un javascript non intrusif qui scanne tous les formulaire ayant le paramètre "data-remote" et fait ce qu'il faut pour qu'ils envoyent leurs données en asynchrone
   * (Je me demande bien pourquoi j'ai utilisé une liste pour vous raconter ça !!)
   * enfin il suffit de préciser l'id de la div qui va recevoir la réponse dans les options de la fonction js ajaxForm()
+  * c'est le que tout le business se passe, le controller doit calculer tous les trucs qui peuvent interesser le client (TODO)
+  * le resultat renvoyé peut être un rendu de page HTML (sans layout) qui sera alors inséré dans la div d'id référencée dans le ajaxForm.
   
 
 h1. Architecture du projet
