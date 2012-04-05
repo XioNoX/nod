@@ -1158,6 +1158,195 @@ INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.
 INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`, `contact_id`) VALUES ("Bibliothèque Municipale Indre","Bibliothèque",320,"culture_places",230,188);
 INSERT INTO `contacts`(`phone`) VALUES (0240854616);
 
+# bars
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("John Mc Byrne","Un vrai pub en bois sombre, à la lumière tamisée, placé au coeur du Bouffay. De beaux bancs en bois travaillé, à l'austérité presque ecclésiastique. L'ambiance y est souvent très chaude. Le John Mac Byrne est tenu par d'authentiques irlandais avec juste ce qu'il faut d'accent hésitant.",321,"bars",1);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.552552,47.215663,"21 Rue des Petites Ecuries",44000,"Nantes");
+INSERT INTO `bars`(`dancefloor`) VALUES(1);
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("L'Appartement","Dans la lignée des lounge bars branchés, l'Appartement nous fait pénétrer dans un univers très cosy et chaleureux éclairé par de douces lumières tamisées. Installé dans un superbe décor très éthnique (mêlant Afrique et Asie avec harmonie), on sirote cocktails ou thés sur fond musical du DJ Jee One.",322,"bars",2);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.562866,47.212921,"1 Rue Gresset",44000,"Nantes");
+INSERT INTO `bars`(`dancefloor`) VALUES(1);
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Les Fées maisons","Magie, magie avec les Fées Maisons, ce café des curiosités qui étonne par sa poésie. Dans le royaume de Mélusine, des grigris vous souhaitent la bienvenue et des élixirs vous sont même proposés en guise de boissons. Intriguant à souhait, nul doute que vous serez transportez dans un pays vraiment imaginaire",323,"bars",3);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.557185,47.215579,"3 Rue Pré Nian",44000,"Nantes");
+INSERT INTO `bars`(`dancefloor`) VALUES(1);
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Le Sélect","Le café Sélect présente une belle façade de mosaïque bleue, chatoyante comme les écailles d'un poisson. On y déjeune fort simplement : quiches, salades, pâtes à prix raisonnables. C'est une adresse appréciée surtout à midi. La salle, lumineuse, de couleurs gaies reçoit parfois sur ses murs des expositions de peinture",324,"bars",4);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.552355,47.21624,"14 Rue du Château",44000,"Nantes");
+INSERT INTO `bars`(`dancefloor`) VALUES(1);
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Le Graslin","Une petite bière ? Oui, mais laquelle ? Votre choix devra se faire parmi près de 200 bières différentes (9 pressions) choisies avec soin par le patron qui se fera un plaisir de vous conseiller. L'ambiance y est bretonne mâtinée rock'n'roll: musique celtique, conversations d'habitués et rigolades bon enfant.",325,"bars",5);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.562816,47.213339,"1 Rue Racine",44000,"Nantes");
+INSERT INTO `bars`(`dancefloor`) VALUES(1);
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("L'Antirouille","",326,"bars",6);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.551345,47.215125,"1 Rue Paul Dubois",44000,"Nantes");
+INSERT INTO `bars`(`dancefloor`) VALUES(1);
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Le Perrok","Un bar chaleureux qui fait l'angle entre la rue de la Bâclerie et la rue des Echevins. Un mur pieusement conservé lui fait face où l'on voit, encastrées, les traces de cheminées anciennes. La petite place juste devant permet de boire une bière (plus de 40 bières en bouteille, surtout belges) à l'ombre des arbres touffus.",327,"bars",7);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.553004,47.215098,"2 Rue de la Bâclerie",44000,"Nantes");
+INSERT INTO `bars`(`dancefloor`) VALUES(1);
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Le Melting Potes","Au coeur de l'île de Nantes, Le Melting Potes accueille sa clientèle dans un cadre chaleureux. L'établissement propose une cuisine traditionnelle à des prix raisonnables. On retient notamment la formule à l'ardoise qui propose chaque jour 4 entrées, 3 plats et 4 desserts. Le tout, cuisiné à base de produits frais.",328,"bars",8);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.557678,47.205072,"26 Boulevard de la Prairie au Duc",44200,"Nantes");
+INSERT INTO `bars`(`dancefloor`) VALUES(1);
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Le Rond Point","Dans ce bar du Quai des Antilles, vous pouvez trinquer au-dessus d'un panneau Stop ou encore de limitation à 70. Pour ceux qui envisagent de tester plusieurs shooters, mieux vaut laisser la voiture au garage.",329,"bars",9);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.572767,47.202054,"21 Quai des Antilles",44200,"Nantes");
+INSERT INTO `bars`(`dancefloor`) VALUES(1);
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("La Gargouille","Un vrai chalet, rustique et chaud sur l'île Feydeau. Sur les tables en bois brut, on boit des rhums marinés et des cocktails à base de Chartreuse. Les prix pratiqués raviront les petits budgets. Côté musique, c'est français et indépendant : les patrons accordent beaucoup d'attention à leur programmation.",330,"bars",10);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.553789,47.21313,"3 Allée de Turenne",44000,"Nantes");
+INSERT INTO `bars`(`dancefloor`) VALUES(1);
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Le Bistrot à Gilles","Situé rue de la Bastille, le restaurant Le Bistrot à Gilles est à quelques pas du centre-ville. Dans un décor cosy, élégant et coloré, le chef Gilles Renault vous invite à (re)découvrir de grands classiques français revisités à sa sauce, comme la tarte fine aux maquereaux ou encore le crumble aux biscuits Lu, spécialités de la maison. Les formules proposées sont adaptées au budget et temps de chacun : bistronome, gastronome, gastro-express etc. : tous les gourmets y trouveront leur bonheur.",331,"bars",11);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.553514,47.21539,"21 Rue de la Juiverie",44000,"Nantes");
+INSERT INTO `bars`(`dancefloor`) VALUES(1);
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Le Bar du Coin","Avec sa façade blanche, le bar du coin (il fait effectivement l'angle de la rue) détonne dans ce vieux quartier du Bouffay. Installé depuis 2000 seulement, il s'est vite imposé comme un lieu dynamique, un brin branché, très couru. A l'image de sa déco intérieure entre bistrot à l'ancienne et détails années 70 : Playmobil géant et lampes globes.",332,"bars",12);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.5484,47.204759,"9 Boulevard Gustave Roch",44200,"Nantes");
+INSERT INTO `bars`(`dancefloor`) VALUES(1);
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Bar Ile","L'endroit se distingue par ses teintes chaudes et chaleureuses. Plats traditionnels le midi (frites maison), et dégustation d'Huîtres (bretonnes) à n'importe quel moment de la journée ! Chaque vendredi soir, le bar propose des apéro-concerts. Les murs sont à la disposition des artistes...ce qui garantie un changement de décor tous les mois.",333,"bars",13);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.56251,47.214012,"24 Rue Scribe",44000,"Nantes");
+INSERT INTO `bars`(`dancefloor`) VALUES(1);
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Le Café du Passage","Situé à l'extrémité d'une petite rue commerçante couverte, ce café porte bien son nom. Il y a autant de passages à l'extérieur, qu'à l'intérieur et il s'en dégage une ambiance plutôt sympathique et conviviale. La gente féminine représente 90% de la clientèle. Qu'elles soient étudiantes ou vendeuses des commerces avoisinants, elles sont toutes des habituées du lieu et pour cause...",334,"bars",14);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.55732,47.214839,"1 Place Félix Fournier",44000,"Nantes");
+INSERT INTO `bars`(`dancefloor`) VALUES(1);
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Le Chien Stupide","",335,"bars",15);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.551507,47.216571,"4 Rue des Carmélites",44000,"Nantes");
+INSERT INTO `bars`(`dancefloor`) VALUES(1);
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Le Dehlis Café","Au beau milieu du Cours des 50 Otages, en terrasse ou à l'intérieur, le passage du tramway ne semble pas perturber le bien-être ambiant. Un bar agréable qui ravit la jeunesse nantaise ; des pierres apparentes, un décor chaleureux et de nombreux recoins pour le plaisir de tous.",336,"bars",16);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.556876,47.215463,"6 Allée d'Orléans",44000,"Nantes");
+INSERT INTO `bars`(`dancefloor`) VALUES(1);
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Pour ceux qui savent","Vieilles pierres apparentes associées à des matériaux plus modernes : bar en alu, sièges en velours, escalier en métal, le cadre vaut le détour. En créant une ambiance cosy, la mezzanine avec ses sofas et poufs est un lieu où détente rime avec dégustation. Si la décoration est recherchée, soyez assurés que la carte est à son image : cocktails sans alcool comme La paresse en douce à base d'orange, ananas, lait et morceaux de bananes, cocktail alcoolisé, tel que l'aqualanca à base d'anis.",337,"bars",17);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.555242,47.216609,"22 Rue des Carmes",44000,"Nantes");
+INSERT INTO `bars`(`dancefloor`) VALUES(1);
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Côté plage ","",338,"bars",18);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.555634,47.212356,"14 Rue de Turenne",44000,"Nantes");
+INSERT INTO `bars`(`dancefloor`) VALUES(1);
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("La Brasserie du Théâtre","Petit bar tranquille la journée, avec son flipper, ses tabourets excentriques et son large bar en bois (sans oublier la terrasse les beaux jours ! ), la Brasserie du Théâtre se met à vivre dès 19H. Au beau milieu de la rue Scribe, à la sortie du Katorza, ce bar accueille volontiers les jeunes aimant mettre l'ambiance dans la festive rue !",339,"bars",19);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.562449,47.213995,"22 Rue Scribe",44000,"Nantes");
+INSERT INTO `bars`(`dancefloor`) VALUES(1);
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Le Code Bar","",340,"bars",20);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.560289,47.212428,"5 Rue Jean-Jacques Rousseau",44000,"Nantes ");
+INSERT INTO `bars`(`dancefloor`) VALUES(1);
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Le Rabelais","Juste en face du l'Hôtel St Daniel et de la jolie église Ste Croix, au coeur du Bouffay, le Rabelais occupe une place de choix. Pub, bar à bières (bretonnes notamment), on y chante parfois des chansons de marins dans une franche bonne humeur. Une des spécialités du Rabelais - plutôt pour l'hiver - c'est la bière chaude.",341,"bars",21);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.554433,47.214765,"3 Rue du Bouffay",44000,"Nantes");
+INSERT INTO `bars`(`dancefloor`) VALUES(1);
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Le Trianon","",342,"bars",22);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.559392,47.212374,"11 Place de la Bourse",44000,"Nantes");
+INSERT INTO `bars`(`dancefloor`) VALUES(1);
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Noops","",343,"bars",23);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.557333,47.213418,"13 Place du Commerce",44000,"Nantes");
+INSERT INTO `bars`(`dancefloor`) VALUES(1);
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("L'Art Scène"," ",344,"bars",24);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.552496,47.216176,"19 Rue du Château",44000,"Nantes");
+INSERT INTO `bars`(`dancefloor`) VALUES(1);
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Bar le Guépin"," ",345,"bars",25);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.558778,47.216559,"8 Rue Le Guépin",44000,"Nantes");
+INSERT INTO `bars`(`dancefloor`) VALUES(1);
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Café La Perle"," ",346,"bars",26);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.558033,47.213749,"8 Rue du Port-au-vin",44000,"Nantes");
+INSERT INTO `bars`(`dancefloor`) VALUES(1);
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Café Le bon Pasteur"," ",347,"bars",27);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.558747,47.215553,"3 Place Bon Pasteur",44000,"Nantes");
+INSERT INTO `bars`(`dancefloor`) VALUES(1);
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Café Le Médi"," ",348,"bars",28);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.55415,47.214353,"2 Rue de la Paix",44000,"Nantes");
+INSERT INTO `bars`(`dancefloor`) VALUES(1);
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Le Havana Café","Le plancher est rugueux sous les pieds, les lumières colorées et intimistes, les murs ont le ton sable des rues de Cuba. Des belles photos évoquent l'île mythique : Che Guevara souriant le cigare aux lèvres, Cubains ridés, rues désolées. Cette belle salle est comme doublée au sous-sol : cave voûtée de pierres sombres.Un même immense comptoir occupe l'espace. Côté boissons, on retrouve les spécialités locales : mojito, rhums...Avec ses horaires étendus, sa place privilégiée au coeur du Bouffay, son ambiance latino (donc chaude), le Havana Café enchante nombre de nantais. En été, on va jouir du soleil, du vrai, sur la terrasse animée.",349,"bars",29);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.552528,47.215766,"2 Rue de la Juiverie",44000,"Nantes");
+INSERT INTO `bars`(`dancefloor`) VALUES(1);
+
+
+
+# restaurants 
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Le Bistrot à Gilles","Situé rue de la Bastille, le restaurant Le Bistrot à Gilles est à quelques pas du centre-ville. Dans un décor cosy, élégant et coloré, le chef Gilles Renault vous invite à (re)découvrir de grands classiques français revisités à sa sauce, comme la tarte fine aux maquereaux ou encore le crumble aux biscuits Lu, spécialités de la maison. Les formules proposées sont adaptées au budget et temps de chacun : bistronome, gastronome, gastro-express etc. : tous les gourmets y trouveront leur bonheur.",350,"restaurants",1);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.565524,47.218452,"11 Bis Rue de la Bastille",44000,"Nantes");
+INSERT INTO `restaurants`(`food_type`) VALUES("Restaurant français");
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Don Quijote","Le restaurant Don Quijote vous accueille dans une ambiance conviviale et chaleureuse. Au programme, une cuisine espagnole où toutes les spécialités ibériques sont à l’honneur. Tapas, paellas mais aussi grands classiques argentins sont à la carte, à accompagner de l’un des grands crus espagnols proposés",351,"restaurants",2);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.561691,47.218423,"24 Rue Jean Jaurès",44000,"Nantes");
+INSERT INTO `restaurants`(`food_type`) VALUES("Restaurant espagnol/argentin");
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Le Nouveau Monde","Vous n'y verrez plus l'auteur (qui naquit en ces murs le 8 février 1828) mais de délicieux plats cuisinés, façon maison, faisant preuves d’associations surprenantes. L'âme de Jules Verne, sans doute ! L’endroit est tout simplement bon. L'inventivité et le raffinement des chefs surpendront les plus gourmands d'entre vous.",352,"restaurants",3);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.554858,47.213275,"4, Cours Olivier de Clisson",44000,"Nantes");
+INSERT INTO `restaurants`(`food_type`) VALUES("Restaurant français");
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("La Cigale","Classé Monument Historique, La Cigale est l'un des restaurants incontournables de Nantes. Ce qui fait sa réputation, c'est son décor style brasserie 1900: céramiques colorées, plafonds peints, boiseries travaillées. On peut jouir de cette ambiance dès le matin pour prendre un petit déjeuner. Ceux qui ont un tout petit budget peuvent y aller sans se ruiner en commandant thé ou pâtisserie.",353,"restaurants",4);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.562236,47.212943,"4 Place Graslin",44000,"Nantes");
+INSERT INTO `restaurants`(`food_type`) VALUES("Salon de thé");
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Shalimar","L'accueil, le décor et la cuisine font de ce restaurant indien un incontournable de Nantes. Découvrez toutes les saveurs et les couleurs de l'exotisme dans votre assiette : agneau, poulet, bœuf, crevettes au curry, tikka massala, naans fondants au fromage et un grand choix de plats végétariens.",354,"restaurants",5);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.56173,47.212927,"17, Rue Jean-Jacques Rousseau",44000,"Nantes");
+INSERT INTO `restaurants`(`food_type`) VALUES("Restaurant indien");
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Les pieds dans le plat","La cuisine est simple, traditionnelle et Française, teintée ici et là d'épices du monde : Tartare de saumon fumé au gingembre et à l'aneth, Foie gras de canard au 4 épices. La Mousse au chocolat comme Le gratin de fruits rouges plutôt classiques, n'en sont pas moins un délice. Côté déco, vous plongerez dans un univers baroque chic : nappes zébrées, banquettes de velours rouge et pierres apparentes entre lesquelles de nombreux clients ont déposé des pièces de monnaie et prononcés un vœux.",355,"restaurants",6);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.561201,47.212759,"13, Rue Jean Jacques Rousseau ",44000,"Nantes");
+INSERT INTO `restaurants`(`food_type`) VALUES("Restaurant français");
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("L'Entrecôte","L'Entrecôte est une immense brasserie version chaîne située sur le square Fleuriot. L'environnement proche est donc agréable : arbres à l'ombre généreuse, jeux d'eau.Le menu type est constitué d'une tranche de contre-filet accompagnée de pommes allumettes et de salade aux noix. Ses boiseries et tapisseries écossaises lui confèrent une chaleur appéciée",356,"restaurants",7);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.556694,47.213598,"2 Rue du Couëdic",44000,"Nantes");
+INSERT INTO `restaurants`(`food_type`) VALUES("Viandes et grillades");
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Taï Shogun","Deux ambiances et deux formules dans ce restaurant japonais non loin du Palais de justice.  Un tapis roulant sur lequel on pioche sushis, sashimis, makis, temakis dans des assiettes de différentes couleurs en fonction du prix.  Et une salle de restaurant à la japonaise qui entoure le hibachi, table chauffante sur laquelle cuisent sans matière grasse des aliments saisis à cœur, selon la technique du teppanyaki.",357,"restaurants",8);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.559426,47.2079,"10 Quai François Mitterrand",44000,"Nantes");
+INSERT INTO `restaurants`(`food_type`) VALUES("Restaurant japonais");
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Un Brin de folie","Dans ce petit restaurant coquet de la rue Kervégan, à la déco moderne et pierres apparentes, vous pourrez déguster des mets simples et originaux : charlotte aux asperges et jambon cru ou encore espadon en croûte de sésame et un framboisier au nutella. Faites votre choix dans le petit journal du restaurant qui est distribué aux clients en guise de carte.",358,"restaurants",9);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.555453,47.212785,"20 Rue Kervégan",44000,"Nantes");
+INSERT INTO `restaurants`(`food_type`) VALUES("Restaurant français");
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Entre Amis","",359,"restaurants",10);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.544658,47.218505,"4, Rue des Trois Croissants",44000,"Nantes");
+INSERT INTO `restaurants`(`food_type`) VALUES("Restaurant français");
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("2 potes au feu","Les 2 Potes au Feu se situe au coeur du nouveau quartier Chesnaie, sur la route de Sainte Luce. L'établissement propose une cuisine traditionnelle de qualité, remise au goût du jour avec une touche d'originalité. Les produits utilisés sont frais et de saison.",360,"restaurants",11);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.544658,47.218505,"1 Place Commandant Cousteau",44000,"Nantes");
+INSERT INTO `restaurants`(`food_type`) VALUES("Bistrot/Brasserie");
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Le Fou du Roi","C’est juste au pied du Château des Ducs de Bretagne, en plein cœur de Nantes, que tintent les couverts d’un restaurant aux vues imprenables. Etre Fou du Roi à bien quelques avantages… Côté intérieur, pierres apparentes et toiles épurées font bon mélange aux murs. Comme un goût d’Histoire et de modernité, le restaurant se fait garant de la mémoire de la ville pour des prix et des plats abordables.",361,"restaurants",12);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.549751,47.217036,"2, Rue Prémion",44000,"Nantes");
+INSERT INTO `restaurants`(`food_type`) VALUES("Restaurant français");
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Vanola","La cuisine et les coutumes asiatiques sont de rigueurs au Vanola. Vous pouvez ainsi dîner autour d'une table basse, allongé ou en tailleur, selon votre souplesse et déguster des mets joliment présentés. Si cela ne vous chante pas vous pourrez vous installer dans l'autre salle joliement décorée pour déguster les plats savoureux et épicés.",362,"restaurants",13);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.546288,47.217379,"34, Rue de Richebourg",44000,"Nantes");
+INSERT INTO `restaurants`(`food_type`) VALUES("Restaurant thaïlandais");
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Le Café Cult'","Petit café feutré très prisé par les étudiants nantais, le café cult a deux ambiances. A l'intérieur, tamisé et classe, des plats et salades sont servis le midi, de 12h à 14h et de le soir, de 20h à 22h30; festif et étudiant en terrasse dès que le soleil pointe le bout de son nez Alors, romantique ou animé",363,"restaurants",14);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.554885,47.215775,"2 Rue des Carmes",44000,"Nantes");
+INSERT INTO `restaurants`(`food_type`) VALUES("Restaurant français");
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Monseigneur","C'est un éblouissant palais au plafond de bois richement décoré, aux mosaïques luxuriantes, aux banquettes moelleuses. Deux salons isolés par des moucharabieh permettent des petits dîners plus intimes entre amis.Onze sortes de couscous (dont un sans viande), des tajines traditionnels et des grillades pour un repas gourmet de qualité",364,"restaurants",15);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.559177,47.212773,"5 Place de la Bourse",44000,"Nantes");
+INSERT INTO `restaurants`(`food_type`) VALUES("Restaurant marocain");
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Le Petit Bacchus","Dans une vieille bâtisse nantaise, le restaurant le Petit Bacchus vous propose de déguster une cuisine française raffinée, à des prix abordables. Doté de cinq étages, l'établissement dispose de 8 salles, aux décors variés.Ragoût de lotte sauce langoustine ou encore Carbonnade de joues de bœuf à la bière, le chef travaille les recettes mais aussi la disposition dans l'assiette.",365,"restaurants",16);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.554906,47.214987,"5 Rue Beauregard",44000,"Nantes");
+INSERT INTO `restaurants`(`food_type`) VALUES("Restaurant français");
+
+INSERT INTO `points_of_interest`(`label`, `description`,`gps_id`, `type`, `type_id_in_table`) VALUES ("Un Amour de pomme de terre","Comme son nom l'indique, ce restaurant est un spécialiste de la pomme de terre. Dans ce décor rustique et chaleureux, vous découvrirez toutes les manières de cuisiner ce féculent : purées, gratins, salades, raclettes... Chez Un amour de pomme de terre, c'est donc lundi des patates, mardi des patates et cela juqu'au dimanche soir.",366,"restaurants",17);
+INSERT INTO `gps`(`longitude`, `latitude`, `address`, `zip`, `city`) VALUES (-1.555208,47.215773,"4 Rue des Halles ",44000,"Nantes");
+INSERT INTO `restaurants`(`food_type`) VALUES("Restaurant français");
+
 
 
 

@@ -31,6 +31,17 @@ AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_bin;
 
+-- -----------------------------------------------------
+-- Table `nod`.`restaurants`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `nod`.`restaurants` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `food_type` varchar(255) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`) )
+ENGINE = MyISAM
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin;
 
 -- -----------------------------------------------------
 -- Table `nod`.`bars`
