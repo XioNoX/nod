@@ -13,7 +13,7 @@ J'ai commencé à mettre en place un formulaire (tout con pour le moment) pour d
 
 h1. Architecture du projet
 
-dossier "pulic" : contient tous les fichiers statiques de l'application (css et javascripts) 
+dossier "public" : contient tous les fichiers statiques de l'application (css et javascripts) 
 dossier "controllers" : tous les contrôleurs de l'application 
 dossier "views" : toutes les vues de l'application. Le fichier "layout.html" est utilisé comme fond de toutes les autres vues et contient toute la mise en forme du site. Les autre fichiers ne servent qu'a afficher un type de donnée particulière.
 
@@ -31,4 +31,24 @@ Ensuite pour la gestion des actions, il faut que l'on mette en place un contrôl
 
  Question ouverte : est ce que l'on gère plusieurs format différents (json et XML) ou un seul. Personnelement je penche plus pour le simple format json.
 
+
+h1. Création de la base de données et insertion de données exemples.
+
+Les données sont tirés des différents fichiers csv disponibles sur le site open data de la ville de Nantes, et de données provenant de sites webs (notamment pour les bars et restaurants).
+A l'heure actuelle, il suffit, pour avoir une base fonctionnelle de : 
+ - importer le fichier bdd-docs/insert/nod.sql.
+ - importer le fichier bdd-docs/insert/all.sql (représentant les données POI, GPS, et contacts)
+ - importer le fichier bdd-docs/insert/tan_stops.sql (représentant tous les arrêts de la TAN de la ville de Nantes)
+
+ h2. Remarques
+Pour le moment, les données insérées permettent de donner à l'utilisateur des applications des poitns d'intérêts ainsi que la position de ces points. Cela représente donc une base fiable pour débuter.
+La base de données sera modifiée continuellement, de façon à rajouter des attributs plus précis, permettant d'obtenir de meilleurs informations sur les différents points d'intérêts, et ainsi donner à 
+l'utilisateur la meilleure journée et expérience possible.
+
+Il y aura donc plusieurs choses à faire pour tenir la base à jour: 
+	- Importer de temps à autres des fichiers sql qui consisteront à altérer la base de données.
+		- Dans le cas où l'on doit regénérer entièrement la base, le message présent dans le commit contenant la modification le précisera et l'API devra être modifiée en conséquence (idéalement en même temps que la modification committed de la base.
+
+ h2. Contenu des tables.
+On a à notre disposition pour le moment plus de 400 POI, avec les positions GPS associées (100 parcs, 200 lieux culturels, 30 bars et 20 restaurants environ).
 
