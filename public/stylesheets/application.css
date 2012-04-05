@@ -1,0 +1,7 @@
+body {
+  background-color:#CCC;
+  color:#555;
+}
+ h1, h2 {
+  text-shadow:0px 1px 0px white;
+}

@@ -3,12 +3,14 @@
 require_once "controllers/home.php";
 require_once "controllers/poi.php";
 require_once "controllers/park.php";
+require_once "controllers/activity.php";
 require_once "lib/base.php";
 
 require_once "config.php";
 
 #Defining all the routes of the application 
 F3::route('GET /','home::index');
+F3::route('POST /getActivities', 'activity::compute');
 
 
 #API routes 
