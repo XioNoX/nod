@@ -1,19 +1,21 @@
-h1. Note sur les formulaires<
+h1. Note sur les formulaires
+
 J'ai commencé à mettre en place un formulaire (tout con pour le moment) pour demander ce que le gars veut faire. Il y a plusieurs petites choses à savoir sur le formulaire que j'ai fais : 
   * Ce formulaire envoie les données en asynchrone
-  * Vous allez me dire qu'il n'y a rien sur le formulaire qui dit qu'il est asynchrone (du genre un onsubmit=...)<
+  * Vous allez me dire qu'il n'y a rien sur le formulaire qui dit qu'il est asynchrone (du genre un onsubmit=...)
   * C'est là où est l'astuce, grace à HTML5, j'ai mis un attribut "data-remote=true"<
-  * Ainsi c'est un javascript non intrusif qui scanne tous les formulaire ayant le paramètre "data-remote" et fait ce qu'il faut pour qu'ils envoyent leurs données en asynchrone<
-  * (Je me demande bien pourquoi j'ai utilisé une liste pour vous raconter ça !!)<
-  * enfin il suffit de préciser l'id de la div qui va recevoir la réponse dans les options de la fonction js ajaxForm()<
+  * Ainsi c'est un javascript non intrusif qui scanne tous les formulaire ayant le paramètre "data-remote" et fait ce qu'il faut pour qu'ils envoyent leurs données en asynchrone
+  * (Je me demande bien pourquoi j'ai utilisé une liste pour vous raconter ça !!)
+  * enfin il suffit de préciser l'id de la div qui va recevoir la réponse dans les options de la fonction js ajaxForm()
   
 
-.h1 Architecture du projet
-dossier "pulic" : contient tous les fichiers statiques de l'application (css et javascripts) <br/>
-dossier "controllers" : tous les contrôleurs de l'application <br/>
+h1. Architecture du projet
+
+dossier "pulic" : contient tous les fichiers statiques de l'application (css et javascripts) 
+dossier "controllers" : tous les contrôleurs de l'application 
 dossier "views" : toutes les vues de l'application. Le fichier "layout.html" est utilisé comme fond de toutes les autres vues et contient toute la mise en forme du site. Les autre fichiers ne servent qu'a afficher un type de donnée particulière.
 
-.h1 API
+h1. API
 
 Quelques routes ont été mises en place à titre d'exemple. Tout se passe dans le index.php.
 
