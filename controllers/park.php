@@ -9,7 +9,7 @@
       $parks = DB::sql("SELECT * FROM points_of_interest 
                         INNER JOIN parks
                         ON parks.id = points_of_interest.type_id_in_table
-                        WHERE type='park'
+                        WHERE type='parks'
                         LIMIT $count");
       echo json_encode($parks);
     }
@@ -21,7 +21,7 @@
       $park = DB::sql("SELECT * FROM points_of_interest 
                         INNER JOIN parks
                         ON parks.id = points_of_interest.type_id_in_table
-                        WHERE type='park'
+                        WHERE type='parks'
                         AND parks.id=$id");
       echo json_encode($park);
      }

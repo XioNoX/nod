@@ -17,7 +17,9 @@ return a single poi */
    static function show() {
       $id = F3::get('PARAMS["id"]');
       echo F3::get('GET["id"]');
-      echo "you have asked for the poi ".$id;
+      $poi = DB::sql("SELECT * from points_of_interest
+			WHERE id=$id");
+      echo json_encode($poi);
    }
   
 }
