@@ -5,6 +5,7 @@ config.php
 *.py~
 *~
 *.swp
+*.htacces
 
 #for the mac users ;)
 .DS_Store

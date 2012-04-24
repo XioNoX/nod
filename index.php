@@ -1,10 +1,10 @@
 <?php
 
+require_once "lib/base.php";
 require_once "controllers/home.php";
 require_once "controllers/poi.php";
 require_once "controllers/park.php";
 require_once "controllers/activity.php";
-require_once "lib/base.php";
 
 require_once "config.php";
 
