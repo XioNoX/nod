@@ -9,7 +9,14 @@ lists all the poi in the database */
       $poi = new Axon("points_of_interest"); 
       $poi = DB::sql("SELECT * from points_of_interest INNER JOIN gps
 	  		ON points_of_interest.gps_id = gps.id");
-      echo json_encode($poi);
+      switch ($_GET["output"]) {
+        case "jsonp":
+          $callback = $_GET["callback"];
+          echo "$callback(\"".addslashes(json_encode($poi))."\");";
+          break;
+        default:
+          echo json_encode($poi);
+      }
    }
    
    
