@@ -13,6 +13,7 @@ lists all the poi in the database */
       switch ($output) {
         case "jsonp":
           $callback = isset($_GET["callback"]) ? $_GET["callback"] : "callback";
+          header("Content-type: text/javascript");
           echo "$callback(\"".addslashes(json_encode($poi))."\");";
           break;
         default:
