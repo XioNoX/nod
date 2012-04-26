@@ -1,0 +1,3 @@
+/* the dev set the environment to development. It will change the url called for the api. 
+   If you want to be in production environment just comment the dev variable */
+dev = 1; 
