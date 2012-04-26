@@ -6,47 +6,31 @@
   <link rel="stylesheet" href="stylesheets/leaflet.css" />
   <script type="text/javascript" src="javascripts/jquery.js"></script>
   <script type="text/javascript" src="javascripts/jquery.form.js"></script>
+  <script type="text/javascript" src="javascripts/leaflet.js"></script>
+  <script type="text/javascript" src="javascripts/wax.leaf.min.js"></script>
+  <script type="text/javascript" src="javascripts/apiConfig.js"></script>
   <script type="text/javascript" src="javascripts/application.js"></script>
-  <script src="javascripts/leaflet.js"></script>
-  <script src="javascripts/wax.leaf.min.js"></script>
   <title>Let's Go</title>
 
 </head>
 
 <body>
+
   <h1>J'ai entendu dire que vous vouliez découvrir Nantes</h1>
-<h2> Mais alors que voulez vous faire ? </h2>
+  <h2> Mais alors que voulez vous faire ? </h2>
+  <form name="input" action="getActivities" data-remote=true  method="POST">
+    <input name="value" type="text"/>
+    <input type="submit"/>
+  </form>
 
-<form name="input" action="getActivities" data-remote=true  method="POST">
-  <input name="value" type="text"/>
-  <input type="submit"/>
-</form>
-<div id="felix">
+  <button onclick="showPois();">Pourquoi tu ne commencerais pas par me montrer les POIS ?</button>
 
-</div>
+  <div id="content">
 
-<div id="mapbox" style="width: 800px; height: 400px"></div>
-    <script type="text/javascript">
+  </div>
 
-    // Define the map to use from MapBox
-    // This is the TileJSON endpoint copied from the embed button on your map
-    var url = 'http://a.tiles.mapbox.com/v3/xionox.map-ef0s39bd.jsonp';
-
-    // Make a new Leaflet map in your container div
-    var map = new L.Map('mapbox')  // container's id="mapbox"
-
-    // Center the map on Washington, DC, at zoom 15
-    .setView(new L.LatLng(47.215, -1.541), 13);
-
-    // Get metadata about the map from MapBox
-    wax.tilejson(url, function(tilejson) {
-        // Add MapBox Streets as a base layer
-        map.addLayer(new wax.leaf.connector(tilejson));
-    });
-    </script>
-
+  <div id="mapbox" style="width: 800px; height: 400px"></div>
 
 </body>
-
 </html>
 
