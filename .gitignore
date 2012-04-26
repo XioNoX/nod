@@ -6,6 +6,7 @@ config.php
 *~
 *.swp
 .htaccess
+/javascripts/config.js
 
 #for the mac users ;)
 .DS_Store
