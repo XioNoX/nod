@@ -30,9 +30,11 @@ function initMap() {
     });
 }
 
-function showPoi() {
+function showPoi(type) {
   var activitiesUrl = APIURL + "activities";
-  $.post(activitiesUrl, {all : true}, function (data, textStatus, xhr) {
+  var types = {};
+  types[type] = true;
+  $.post(activitiesUrl, types, function (data, textStatus, xhr) {
     if (textStatus === "success") {
       var arrayOfPoi = JSON.parse(data);
 

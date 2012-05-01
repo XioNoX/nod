@@ -4,29 +4,38 @@ class activities {
     
   static function compute() {
     $form_values = F3::scrub($_POST); //TODO Protect against XSS
-    //Declaration of what's requested based on the POST fields
+    $query = ""; //the query that will be build depending on the parameters of the request
+
     F3::set('activities_search', TRUE);
-    if(isset($form_values["itinerary"])) F3::set('itinerary',TRUE);
-    if(isset($form_values["all"])) F3::set('all',TRUE);
-    if(isset($form_values["bars"])) F3::set('include_bars',TRUE);
-    if(isset($form_values["poi"])) F3::set('include_poi',TRUE); //Display _all_ the POIs
-    if(isset($form_values["parks"])) F3::set('include_parks',TRUE);
-    if(isset($form_values["restaurants"])) F3::set('include_restaurants',TRUE);
-    if(isset($form_values["cultural_venues"])) F3::set('include_cultural_venues',TRUE);
-    if(isset($form_values["concert"])) F3::set('include_concert',TRUE);
-    if(isset($form_values["date_start"])) F3::set('date_start',$form_values["date_start"]);
-    if(isset($form_values["date_end"])) F3::set('date_end',$form_values["date_end"]);
+    if(isset($form_values["date_start"])) F3::set('date_start',$form_values["date_start"]); //TODO: not used for the moment
+    if(isset($form_values["date_end"])) F3::set('date_end',$form_values["date_end"]); //TODO: not used for the moment
 
-    
-  	$pois = DB::sql("SELECT * from points_of_interest INNER JOIN gps
-	  		ON points_of_interest.gps_id = gps.id");
-    
-    //$poi_parks = parks::query();
-    //$poi= pois::query();
-    //$poi_restaurants = restaurants::query();
-    // etc...
+    if(isset($form_values["all"])) {
+      $query = "SELECT * from points_of_interest INNER JOIN gps
+              ON points_of_interest.gps_id = gps.id";
+    } else {
+      //Declaration of what's requested based on the POST fields
+      $queried_types = array(); //the array containing all the types of poi we want to retreive
+      $possible_types = array("itinerary",
+                              "bars", 
+                              "parks", 
+                              "restaurants", 
+                              "cultural_venues", 
+                              "concerts"); //the array containing all the types of POI available
 
-    //$poi = array_unique(array_merge($poi_parks,$poi_poi));    
+      //checking the types the user has asked for
+      foreach($possible_types as $type) {
+        if(isset($form_values[$type])) array_push($queried_types, $type);
+      }
+
+      //building the query
+      $query = "SELECT * from points_of_interest INNER JOIN gps
+              ON points_of_interest.gps_id = gps.id
+              WHERE points_of_interest.type IN ('".implode("', '", $queried_types)."');";
+    }
+    //if(isset($form_values["poi"])) F3::set('include_poi',TRUE); //Display _all_ the POIs
+
+  	$pois = DB::sql($query);
     
     //if(F3::get('itinerary') == TRUE) //If looking for an itinerary, sort/filter the POIs
     //	$poi = itinerary::compute($poi);
