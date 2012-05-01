@@ -1,6 +1,6 @@
 <?php
   
-class activity {
+class activities {
     
   static function compute() {
     $form_values = F3::scrub($_POST); //TODO Protect against XSS

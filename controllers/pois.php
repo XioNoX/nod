@@ -1,6 +1,6 @@
 <?php
 
-class poi {
+class pois {
   
 /*called for the url /poi.
 lists all the poi in the database */
