@@ -1,5 +1,5 @@
 if (window.dev == undefined) {
-  APIURL = "http://xionox.info/api/";
+  APIURL = "http://nod.xionox.info/";
 } else {
-  APIURL = "http://localhost:8888/nod-back/api/";
+  APIURL = "http://localhost:8888/nod/";
 }

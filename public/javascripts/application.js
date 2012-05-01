@@ -30,23 +30,22 @@ function initMap() {
     });
 }
 
-function showPoiCallback (jsonStr) {
-  var arrayOfPoi = JSON.parse(jsonStr);
+function showPoi() {
+  var activitiesUrl = APIURL + "activities";
+  $.post(activitiesUrl, {all : true}, function (data, textStatus, xhr) {
+    if (textStatus === "success") {
+      var arrayOfPoi = JSON.parse(data);
 
-  var icon = new NodIcon();
-  for (index in arrayOfPoi) {
-    poi = arrayOfPoi[index];
-    var latLong = new L.LatLng(poi.latitude, poi.longitude);
-    var marker = new L.Marker(latLong, {icon:icon});
-    map.addLayer(marker);
-  }
-}
-
-function showPoi () {
-  var scriptTag = document.createElement("script");
-  scriptTag.type = "text/javascript";
-  scriptTag.src = APIURL + "poi?output=jsonp&callback=showPoiCallback";
-  document.body.appendChild(scriptTag);
+      var icon = new NodIcon();
+      for (index in arrayOfPoi) {
+        poi = arrayOfPoi[index];
+        var latLong = new L.LatLng(poi.latitude, poi.longitude);
+        var marker = new L.Marker(latLong, {icon:icon});
+        map.addLayer(marker);
+      }
+    }
+  
+  });
 }
 
 $(document).ready(

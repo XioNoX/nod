@@ -21,7 +21,7 @@ return a single poi */
    }
    
    static function query($id = NULL) {
-   	if (F3::get('include_poi') != TRUE) exit();
+   	if (F3::get('include_poi') != TRUE) return;
    	if(isset($id)) return single($id);
    	return specific($id);
    }

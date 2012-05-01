@@ -18,25 +18,28 @@ class activities {
     if(isset($form_values["date_end"])) F3::set('date_end',$form_values["date_end"]);
 
     
-    $poi_parks = parks::query();
-    $poi_poi = poi::query();
-    $poi_restaurants = restaurants::query();
+  	$pois = DB::sql("SELECT * from points_of_interest INNER JOIN gps
+	  		ON points_of_interest.gps_id = gps.id");
+    
+    //$poi_parks = parks::query();
+    //$poi= pois::query();
+    //$poi_restaurants = restaurants::query();
     // etc...
 
-    $poi = array_unique(array_merge($poi_parks,$poi_poi));    
+    //$poi = array_unique(array_merge($poi_parks,$poi_poi));    
     
-    if(F3::get('itinerary') == TRUE) //If looking for an itinerary, sort/filter the POIs
-    	$poi = itinerary::compute($poi);
+    //if(F3::get('itinerary') == TRUE) //If looking for an itinerary, sort/filter the POIs
+    //	$poi = itinerary::compute($poi);
 
     $output = isset($_GET["output"]) ? $_GET["output"] : "";
     switch ($output) {
     	case "jsonp":
     		$callback = isset($_GET["callback"]) ? $_GET["callback"] : "callback";
     		header("Content-type: text/javascript");
-    		echo "$callback(\"".addslashes(json_encode($poi))."\");";
+    		echo "$callback(\"".addslashes(json_encode($pois))."\");";
     		break;
     	default:
-    		return json_encode($poi);
+    		echo json_encode($pois);
     }
   }
    

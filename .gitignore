@@ -1,6 +1,7 @@
 # saved py files  #
 ###################
 config.php
+public/javascripts/config.js
 *.*~
 *.py~
 *~
