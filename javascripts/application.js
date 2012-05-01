@@ -56,6 +56,8 @@ $(document).ready(
     // bind all the form where the data-remote is setted with an ajax request
     $('form[data-remote]').ajaxForm(ajaxFormOptions);
 
+    $('#accordion').accordion();
+
    
     /***** MAP *******/
     initMap();

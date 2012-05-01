@@ -5,6 +5,7 @@
   <link rel="stylesheet" type="text/css" href="stylesheets/application.css" />
   <link rel="stylesheet" href="stylesheets/leaflet.css" />
   <script type="text/javascript" src="javascripts/jquery.js"></script>
+  <script type="text/javascript" src="javascripts/jquery-ui.js"></script>
   <script type="text/javascript" src="javascripts/jquery.form.js"></script>
   <script type="text/javascript" src="javascripts/leaflet.js"></script>
   <script type="text/javascript" src="javascripts/wax.leaf.min.js"></script>
@@ -12,24 +13,51 @@
   <script type="text/javascript" src="javascripts/apiConfig.js"></script>
   <script type="text/javascript" src="javascripts/application.js"></script>
   <title>Let's Go</title>
-
+    
 </head>
 
 <body>
+  <div id="sidebar">
+    <div id="logo">
+    </div>
 
-  <h1>J'ai entendu dire que vous vouliez découvrir Nantes</h1>
-  <h2> Mais alors que voulez vous faire ? </h2>
-  <form name="input" action="getActivities" data-remote=true  method="POST">
-    <input name="value" type="text"/>
-    <input type="submit"/>
-  </form>
+    <div id="help">
+      <a href="#">Aide</a> |
+      <a href="#">Où suis-je ?</a>
+    </div>
 
+    <div id="accordion">
+      <h3 class="filter">Filtrer</h3>
+      <div>
+      
+      </div>
+
+      <h3 class="timeline">Timeline</h3>
+      <div id="timeline-content">
+        TODO
+        <ul>
+          <li>
+            <div class="time">16h30</div>
+            <div class="name">Un parc quelconque</div>
+          </li> 
+        </ul>
+      </div>
+    </div>
+
+    <!--<form name="input" action="getActivities" data-remote=true  method="POST">
+      <input name="value" type="text"/>
+      <input type="submit"/>
+    </form>-->
+
+	</div>
+
+	<div id="content">
+    <div id="mapbox" style="width: 800px; height: 400px"></div>
+  </div>
+ 
   <button onclick="showPoi();">Pourquoi tu ne commencerais pas par me montrer les POIS ?</button>
 
-  <div id="content">
-  </div>
 
-  <div id="mapbox" style="width: 800px; height: 400px"></div>
 
 </body>
 </html>
