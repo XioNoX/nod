@@ -32,7 +32,8 @@ var ajaxFormOptions = {
 function generateMarkerClickCallback(poi) {
   var generatedFunction = function(event) {
     //TODO : open the panel with the description
-    alert("soon there will be blood here");
+    var descriptionDiv = $("#description");
+    descriptionDiv.html("<h1>" + poi.label + "</h1><p>"+poi.description+"</p>");
   }
   return generatedFunction;
 }
