@@ -18,12 +18,24 @@ var ajaxFormOptions = {
         poi = arrayOfPoi[index];
         var latLong = new L.LatLng(poi.latitude, poi.longitude);
         var marker = new L.Marker(latLong, {icon:icon});
+        marker.on('click', generateMarkerClickCallback(poi));
         markerLayer.addLayer(marker);
       }
       map.addLayer(markerLayer);
     }
   } 
 };
+
+//return a function generated from a poi
+//the returned function take an event as a parameter 
+//the returned function is initialized with a poi thanks to a closure
+function generateMarkerClickCallback(poi) {
+  var generatedFunction = function(event) {
+    //TODO : open the panel with the description
+    alert("soon there will be blood here");
+  }
+  return generatedFunction;
+}
 
 function initMap() {
     // Define the map to use from MapBox
