@@ -1,5 +1,5 @@
 <?php
-
+header("Access-Control-Allow-Origin: *");
 require_once "lib/base.php";
 require_once "controllers/pois.php";
 require_once "controllers/parks.php";
