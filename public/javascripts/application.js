@@ -5,10 +5,23 @@ var NodIcon = L.Icon.extend({
 });
 
 var map = null; //the main map of the page
+var markerLayer = null;
 
 var ajaxFormOptions = { 
-  target: '#content',   
-  success: function() { 
+  success: function(responseText, textStatus, xhr, form) {
+    if (textStatus === "success") {
+      var arrayOfPoi = JSON.parse(responseText);
+      if (markerLayer) markerLayer.clearLayers();
+      markerLayer = new L.LayerGroup();
+      var icon = new NodIcon();
+      for (index in arrayOfPoi) {
+        poi = arrayOfPoi[index];
+        var latLong = new L.LatLng(poi.latitude, poi.longitude);
+        var marker = new L.Marker(latLong, {icon:icon});
+        markerLayer.addLayer(marker);
+      }
+      map.addLayer(markerLayer);
+    }
   } 
 };
 
@@ -28,26 +41,6 @@ function initMap() {
         // Add MapBox Streets as a base layer
         map.addLayer(new wax.leaf.connector(tilejson));
     });
-}
-
-function showPoi(type) {
-  var activitiesUrl = APIURL + "activities";
-  var types = {};
-  types[type] = true;
-  $.post(activitiesUrl, types, function (data, textStatus, xhr) {
-    if (textStatus === "success") {
-      var arrayOfPoi = JSON.parse(data);
-
-      var icon = new NodIcon();
-      for (index in arrayOfPoi) {
-        poi = arrayOfPoi[index];
-        var latLong = new L.LatLng(poi.latitude, poi.longitude);
-        var marker = new L.Marker(latLong, {icon:icon});
-        map.addLayer(marker);
-      }
-    }
-  
-  });
 }
 
 $(document).ready(

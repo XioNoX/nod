@@ -29,9 +29,12 @@
     <div id="accordion">
       <h3 class="filter">Filtrer</h3>
       <div>
-        <button onclick="showPoi('restaurants');">Voir les restaurants</button><br/>
-        <button onclick="showPoi('parks');">Voir les parks</button><br/>
-        <button onclick="showPoi('all');">Voir tous les points</button><br/>
+        
+        <form id="filter-form" action="http://api.naonod.com/activities" data-remote=true  method="POST">
+          <input type="checkbox" name="restaurants" onchange="$('#filter-form').submit();"/>Restaurants<br/>
+          <input type="checkbox" name="parks" onchange="$('#filter-form').submit();"/>Parks<br/>
+        </form>
+
       </div>
 
       <h3 class="timeline">Timeline</h3>
@@ -46,10 +49,6 @@
       </div>
     </div>
 
-    <!--<form name="input" action="getActivities" data-remote=true  method="POST">
-      <input name="value" type="text"/>
-      <input type="submit"/>
-    </form>-->
 
 	</div>
 
