@@ -17,9 +17,8 @@ body {
   background-color:#4b4b4b;
   color:white;
   height:100%;
-  width:100%;
-  margin:0;
-  padding-left:235px;
+  width:calc(100% - 235px);
+  margin-left:235px;
 }
 
  h1, h2 {

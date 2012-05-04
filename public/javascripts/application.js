@@ -22,9 +22,17 @@ var ajaxFormOptions = {
         markerLayer.addLayer(marker);
       }
       map.addLayer(markerLayer);
+      //registrering the event handler for the drag and drop
+      $(".leaflet-marker-icon").each(function(index, element) {
+        element.addEventListener('dragstart', function(e) { 
+          //TODO show the timeline
+          //openTimeline();
+        }, false);
+      });
     }
   } 
 };
+
 
 //return a function generated from a poi
 //the returned function take an event as a parameter 
@@ -58,14 +66,15 @@ function initMap() {
 
 $(document).ready(
   function() {
-    /******* AJAX FORMS *******/
-
     // bind all the form where the data-remote is setted with an ajax request
     $('form[data-remote]').ajaxForm(ajaxFormOptions);
 
     $('#accordion').accordion();
 
-   
+    //adding the dropping event on the timeline
+    var timeline = document.getElementById("timeline-content");
+    timeline.addEventListener("drop", function(e) { alert('felix'); }, false); //XXX
+    timeline.addEventListener("dragover", function(e) { e.preventDefault(); }, false); //XXX
     /***** MAP *******/
     initMap();
   }
