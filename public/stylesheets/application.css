@@ -18,7 +18,7 @@ body {
   color:white;
   height:100%;
   width:calc(100% - 235px);
-  margin-left:235px;
+  margin:0 0 0 235px;
 }
 
  h1, h2 {
@@ -42,9 +42,14 @@ position:absolute;
 
 }
 
+/**** MAP ****/
+.leaflet-popup-content { color:#4b4b4b; }
 #mapbox {
   height:100%;
   width:100%;
+}
+
+#accordion {
 }
 
 #accordion h3 {
@@ -64,11 +69,21 @@ position:absolute;
 #timeline-content {
   margin:5px;
   border-left:white solid 3px;
+height:100%;
 }
 #timeline-content ul {
   list-style-type:none;
   padding:5px;
 }
+
+#description h3 { margin-top:0; }
+#description table { width:100%; height:100%; }
+#description table, #description .close-button {background:rgba(75,75,75,0.75);} 
+#description .close-container { position:relative; height:30px; overflow:hidden;}
+#description .close-button { position:absolute; right:0; font-size:30px; cursor:pointer; border-radius:25px 0 0 0; padding:0 10px 0 10px }
+#description .close-button:before { content:"⨯" }
+#description { display:none; overflow:hidden; position:relative; height:150px; top:-150px; }
+#poi-title { width:30%; }
 
 #android {
   height:77px;

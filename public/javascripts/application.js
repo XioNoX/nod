@@ -4,6 +4,7 @@ var NodIcon = L.Icon.extend({
   shadowUrl: 'images/map/icon-shadow.png'
 });
 
+var currentMarker = null;
 var map = null; //the main map of the page
 var markerLayer = null;
 
@@ -17,31 +18,62 @@ var ajaxFormOptions = {
       for (index in arrayOfPoi) {
         poi = arrayOfPoi[index];
         var latLong = new L.LatLng(poi.latitude, poi.longitude);
-        var marker = new L.Marker(latLong, {icon:icon});
+        var marker = new L.Marker(latLong, {icon:icon}).bindPopup("Pour m'ajouter à votre timeline faites moi glisser jusqu'à elle ");
+        marker.on("click", function(event) { 
+             if (currentMarker != null) {
+                currentMarker.setIcon(new NodIcon()); 
+             }
+             currentMarker = this;
+             this.setIcon(new NodIcon("images/map/selected-icon.png"));
+             initDraggingEventListeners();
+        }, false);
+
         marker.on('click', generateMarkerClickCallback(poi));
         markerLayer.addLayer(marker);
       }
       map.addLayer(markerLayer);
       //registrering the event handler for the drag and drop
-      $(".leaflet-marker-icon").each(function(index, element) {
-        element.addEventListener('dragstart', function(e) { 
-          //TODO show the timeline
-          //openTimeline();
-        }, false);
-      });
+      initDraggingEventListeners();
     }
   } 
 };
 
+function addDraggingEventListener(element) {
+  element.addEventListener('dragstart', function(e) { 
+    openTimeline();
+    showDragMessage();
+  }, false);
+  
+}
+
+function initDraggingEventListeners() {
+  $(".leaflet-marker-icon").each(function(index, element) {addDraggingEventListener(element)}, false);
+}
+
+function openTimeline() {
+  $("#accordion").accordion("activate", ".timeline");
+}
+
+function closeDescription() {
+  $("#description").hide();
+}
+
+function showDragMessage() {
+
+}
 
 //return a function generated from a poi
 //the returned function take an event as a parameter 
 //the returned function is initialized with a poi thanks to a closure
 function generateMarkerClickCallback(poi) {
   var generatedFunction = function(event) {
-    //TODO : open the panel with the description
-    var descriptionDiv = $("#description");
-    descriptionDiv.html("<h1>" + poi.label + "</h1><p>"+poi.description+"</p>");
+    var containerDiv = $("#description");
+    var titleDiv = $("#poi-title");
+    var descDiv = $("#poi-description");
+
+    containerDiv.show(500);
+    titleDiv.html("<h2>"+poi.label+"</h2>");
+    descDiv.html(poi.description);
   }
   return generatedFunction;
 }
