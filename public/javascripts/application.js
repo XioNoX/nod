@@ -7,6 +7,7 @@ var NodIcon = L.Icon.extend({
 var currentMarker = null;
 var map = null; //the main map of the page
 var markerLayer = null;
+var timeline = null; //TODO create an object timeline that can handle adding / deleting and reordering events
 
 var ajaxFormOptions = { 
   success: function(responseText, textStatus, xhr, form) {
@@ -19,9 +20,10 @@ var ajaxFormOptions = {
         var icon = iconForPoi(poi);
         var latLong = new L.LatLng(poi.latitude, poi.longitude);
         var marker = new L.Marker(latLong, {icon:icon}).bindPopup("Pour m'ajouter à votre timeline faites moi glisser jusqu'à elle ");
+        marker.poi = poi;
         marker.on("click", function(event) { 
              if (currentMarker != null) {
-                currentMarker.setIcon(new NodIcon()); 
+                currentMarker.setIcon(iconForPoi(this.poi));
              }
              currentMarker = this;
              this.setIcon(new NodIcon("images/map/selected-icon.png"));
@@ -47,7 +49,6 @@ function addDraggingEventListener(element) {
     openTimeline();
     showDragMessage();
   }, false);
-  
 }
 
 function initDraggingEventListeners() {
@@ -64,6 +65,11 @@ function closeDescription() {
 
 function showDragMessage() {
 
+}
+
+/***** DATA STORAGE *****/
+function savePoiToTimeline(poi) {
+  //TODO 
 }
 
 //return a function generated from a poi
