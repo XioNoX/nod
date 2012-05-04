@@ -27,7 +27,7 @@ h1, h2 {
 
 #logo { background:url(../images/logo.png) no-repeat; height:55px; width:100%; }
 
-#description table, #description .close-button, #sidebar {background:rgba(75,75,75,0.75);} 
+#description table, #description .close-button, #sidebar {background:rgba(75,75,75,0.88);} 
 #sidebar { z-index:100; position:absolute; left:0; width:235px; height:100%;}
 
 /**** MAP ****/
