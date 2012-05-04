@@ -55,7 +55,7 @@ function openTimeline() {
 }
 
 function closeDescription() {
-  $("#description").hide();
+  $("#description").hide("slide", {direction:"down"}, 500);
 }
 
 function showDragMessage() {
@@ -71,7 +71,7 @@ function generateMarkerClickCallback(poi) {
     var titleDiv = $("#poi-title");
     var descDiv = $("#poi-description");
 
-    containerDiv.show(500);
+    containerDiv.show("slide", {direction:"down"}, 500);
     titleDiv.html("<h2>"+poi.label+"</h2>");
     descDiv.html(poi.description);
   }
@@ -105,8 +105,8 @@ $(document).ready(
 
     //adding the dropping event on the timeline
     var timeline = document.getElementById("timeline-content");
-    timeline.addEventListener("drop", function(e) { alert('felix'); }, false); //XXX
-    timeline.addEventListener("dragover", function(e) { e.preventDefault(); }, false); //XXX
+    timeline.addEventListener("drop", function(e) { e.preventDefault(); alert("TODO"); return false; }, false); 
+    timeline.addEventListener("dragover", function(e) { e.preventDefault(); }, false); 
     /***** MAP *******/
     initMap();
   }
