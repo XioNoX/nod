@@ -14,9 +14,9 @@ var ajaxFormOptions = {
       var arrayOfPoi = JSON.parse(responseText);
       if (markerLayer) markerLayer.clearLayers();
       markerLayer = new L.LayerGroup();
-      var icon = new NodIcon();
       for (index in arrayOfPoi) {
         poi = arrayOfPoi[index];
+        var icon = iconForPoi(poi);
         var latLong = new L.LatLng(poi.latitude, poi.longitude);
         var marker = new L.Marker(latLong, {icon:icon}).bindPopup("Pour m'ajouter à votre timeline faites moi glisser jusqu'à elle ");
         marker.on("click", function(event) { 
@@ -37,6 +37,10 @@ var ajaxFormOptions = {
     }
   } 
 };
+
+function iconForPoi(poi) {
+  return new NodIcon("images/map/"+poi.type+"-icon.png");
+}
 
 function addDraggingEventListener(element) {
   element.addEventListener('dragstart', function(e) { 
