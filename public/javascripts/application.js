@@ -7,7 +7,6 @@ var NodIcon = L.Icon.extend({
 var currentMarker = null;
 var map = null; //the main map of the page
 var markerLayer = null;
-var timeline = null; //TODO create an object timeline that can handle adding / deleting and reordering events
 
 var ajaxFormOptions = { 
   success: function(responseText, textStatus, xhr, form) {
@@ -21,6 +20,9 @@ var ajaxFormOptions = {
         var latLong = new L.LatLng(poi.latitude, poi.longitude);
         var marker = new L.Marker(latLong, {icon:icon}).bindPopup("Pour m'ajouter à votre timeline faites moi glisser jusqu'à elle ");
         marker.poi = poi;
+        marker.on("dblclick", function(event) {
+          timeline.addActivity(this.poi);
+        }, false);
         marker.on("click", function(event) { 
              if (currentMarker != null) {
                 currentMarker.setIcon(iconForPoi(this.poi));
@@ -110,13 +112,15 @@ $(document).ready(
   function() {
     // bind all the form where the data-remote is setted with an ajax request
     $('form[data-remote]').ajaxForm(ajaxFormOptions);
-
     $('#accordion').accordion();
 
+    timeline.init({containerId:"timeline-activities-list"});
+    timeline.display();
+
     //adding the dropping event on the timeline
-    var timeline = document.getElementById("timeline-content");
-    timeline.addEventListener("drop", function(e) { e.preventDefault(); alert("TODO"); return false; }, false); 
-    timeline.addEventListener("dragover", function(e) { e.preventDefault(); }, false); 
+    var timelineDiv = document.getElementById("timeline-content");
+    timelineDiv.addEventListener("drop", function(e) { e.preventDefault(); alert("TODO"); return false; }, false); 
+    timelineDiv.addEventListener("dragover", function(e) { e.preventDefault(); }, false); 
     /***** MAP *******/
     initMap();
   }
