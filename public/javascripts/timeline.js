@@ -9,6 +9,9 @@ var timeline = {
   init:function(options) {
     var existsInDatabase = false;
     //TODO get all the activities in the local database 
+    // DEBUG
+    //localStorage.clear();
+    existsInDatabase = this.getElementsFromLocalStorage();
     //TODO get the start and end time of the timeline in the database 
     //if there is no timeline in the database
     if (!existsInDatabase) {
@@ -48,7 +51,36 @@ var timeline = {
   },
   
   addActivity:function(poi) {
+    console.log(poi.label);
+    var lclPoi = {
+      label : poi.label,
+      description : poi.description
+    };
+    if(typeof localStorage != 'undefined'){
+     var poiToStore = JSON.stringify(lclPoi);
+     console.log(poiToStore);
+     localStorage.setItem('poi'+localStorage.length,poiToStore);
+     alert(localStorage.length);
+   } else {
+     alert('Monsieur vous devriez penser a changer de navigateur!!');
+   }
+    
     this.activities.push(poi);
     this.display();
+  },
+  
+  getElementsFromLocalStorage:function() {
+    if(typeof localStorage != 'undefined'){
+      if(localStorage.length > 0){
+	for(var i=0;i<localStorage.length;i++){
+	  alert(JSON.parse(localStorage[i]));
+	} 
+	return true;;
+      } else {
+	  alert('Monsieur vous devriez penser a changer de navigateur!!');
+	  return false;
+      }
+    }
+    return false;
   },
 };

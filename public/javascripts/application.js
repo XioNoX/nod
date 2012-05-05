@@ -21,7 +21,8 @@ var ajaxFormOptions = {
         var marker = new L.Marker(latLong, {icon:icon}).bindPopup("Pour m'ajouter à votre timeline faites moi glisser jusqu'à elle ");
         marker.poi = poi;
         marker.on("dblclick", function(event) {
-          timeline.addActivity(this.poi);
+	  // Doesn't work.
+          timeline.addActivity(marker.poi);
         }, false);
         marker.on("click", function(event) { 
              if (currentMarker != null) {
@@ -66,15 +67,14 @@ function closeDescription() {
 }
 
 function showDragMessage() {
-
 }
 
-/***** DATA STORAGE *****/
-function savePoiToTimeline(poi) {
-  //TODO 
-}
 
-//return a function generated from a poi
+
+
+
+
+//returns a function generated from a poi
 //the returned function take an event as a parameter 
 //the returned function is initialized with a poi thanks to a closure
 function generateMarkerClickCallback(poi) {
