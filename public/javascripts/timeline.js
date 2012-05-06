@@ -60,7 +60,6 @@ var timeline = {
      var poiToStore = JSON.stringify(lclPoi);
      console.log(poiToStore);
      localStorage.setItem('poi'+localStorage.length,poiToStore);
-     alert(localStorage.length);
    } else {
      alert('Monsieur vous devriez penser a changer de navigateur!!');
    }

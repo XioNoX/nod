@@ -20,20 +20,17 @@ var ajaxFormOptions = {
         var latLong = new L.LatLng(poi.latitude, poi.longitude);
         var marker = new L.Marker(latLong, {icon:icon}).bindPopup("Pour m'ajouter à votre timeline faites moi glisser jusqu'à elle ");
         marker.poi = poi;
-        marker.on("dblclick", function(event) {
-	  // Doesn't work.
-          timeline.addActivity(this.poi);
-        }, false);
-        marker.on("click", function(event) { 
+        marker.addEventListener("click", function(event) { 
              if (currentMarker != null) {
                 currentMarker.setIcon(iconForPoi(this.poi));
              }
              currentMarker = this;
              this.setIcon(new NodIcon("images/map/selected-icon.png"));
              initDraggingEventListeners();
+             openDescription(this.poi);
+             return true;
         }, false);
-
-        marker.on('click', generateMarkerClickCallback(poi));
+        marker.addEventListener("dblclick", function(event) {timeline.addActivity(this.poi);}, false);
         markerLayer.addLayer(marker);
       }
       map.addLayer(markerLayer);
@@ -62,6 +59,16 @@ function openTimeline() {
   $("#accordion").accordion("activate", ".timeline");
 }
 
+function openDescription(poi) {
+    var containerDiv = $("#description");
+    var titleDiv = $("#poi-title");
+    var descDiv = $("#poi-description");
+
+    containerDiv.show("slide", {direction:"down"}, 500);
+    titleDiv.html("<h2>"+poi.label+"</h2>");
+    descDiv.html(poi.description);
+}
+
 function closeDescription() {
   $("#description").hide("slide", {direction:"down"}, 500);
 }
@@ -69,15 +76,10 @@ function closeDescription() {
 function showDragMessage() {
 }
 
-
-
-
-
-
 //returns a function generated from a poi
 //the returned function take an event as a parameter 
 //the returned function is initialized with a poi thanks to a closure
-function generateMarkerClickCallback(poi) {
+/*function generateMarkerClickCallback(poi) {
   var generatedFunction = function(event) {
     var containerDiv = $("#description");
     var titleDiv = $("#poi-title");
@@ -88,7 +90,7 @@ function generateMarkerClickCallback(poi) {
     descDiv.html(poi.description);
   }
   return generatedFunction;
-}
+}*/
 
 function initMap() {
     // Define the map to use from MapBox
