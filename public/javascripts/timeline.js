@@ -77,7 +77,6 @@ var timeline = {
       console.log(localStorage,length);
       if(localStorage.length > 0){
 	for(var i=0;i<localStorage.length;i++){
-	  console.log(i);
 	  console.log(localStorage.getItem("poi"+i));
 	  curPOI =JSON.parse(localStorage.getItem("poi"+i));
 	  this.activities.push(curPOI);
