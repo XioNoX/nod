@@ -38,15 +38,19 @@
       </div>
 
       <h3 class="timeline">Timeline <button onclick="addCurrentPoiInTimeline();"> + </button></h3>
+      <div id="time-choices">
+	<form id="time-choices-form" action="#"  method="POST">
+	De :<input type="text" name="begin-time" size="5" value=""/> a :<input type="text" name="end-time" size="5" value=""/>
+	<input type="button" value='Valider' onclick="createTimelinePOIObject();"/> 
+	</form>
+      </div>
       <div id="timeline-content">
-        TODO
         <ul id="timeline-activities-list">
         </ul>
       </div>
     </div>
 
-	</div>
-
+  </div>
   <div id="mapbox"></div>
   
   

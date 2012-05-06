@@ -30,7 +30,8 @@ var ajaxFormOptions = {
              openDescription(this.poi);
              return true;
         }, false);
-        marker.addEventListener("dblclick", function(event) {timeline.addActivity(this.poi);}, false);
+        //marker.addEventListener("dblclick", function(event) {timeline.addActivity(this.poi);}, false);
+	marker.addEventListener("dblclick", function(event) {addCurrentPoiInTimeline();}, false);
         markerLayer.addLayer(marker);
       }
       map.addLayer(markerLayer);
@@ -52,7 +53,7 @@ function addDraggingEventListener(element) {
 }
 
 function initDraggingEventListeners() {
-  $(".leaflet-marker-icon").each(function(index, element) {addDraggingEventListener(element)}, false);
+  //$(".leaflet-marker-icon").each(function(index, element) {addDraggingEventListener(element)}, false);
 }
 
 function openTimeline() {
@@ -110,10 +111,19 @@ function initMap() {
     });
 }
 
+
+// Should only play on the displaying of the time form
 function addCurrentPoiInTimeline() {
   if(currentMarker != null) {
-    timeline.addActivity(currentMarker.poi);
   }
+}
+
+
+function createTimelinePOIObject(){
+  var timeDebutInput = document.getElementsByName("begin-time")[0].value;
+  var timeEndInput = document.getElementsByName("end-time")[0].value;
+  timeline.addActivity(currentMarker.poi, timeDebutInput, timeEndInput);
+  
 }
 
 $(document).ready(

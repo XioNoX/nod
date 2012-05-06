@@ -41,7 +41,7 @@ var timeline = {
       var nameDiv = document.createElement("div");
       timeDiv.className = "time";
       nameDiv.className = "name";
-      $(timeDiv).html("Time");
+      $(timeDiv).html(activity.beginTime+" - "+activity.endTime);
       $(nameDiv).html(activity.label);
       listElement.appendChild(timeDiv);
       listElement.appendChild(nameDiv);
@@ -50,11 +50,13 @@ var timeline = {
 
   },
   
-  addActivity:function(poi) {
+  addActivity:function(poi,_beginTime, _endTime) {
     console.log(poi.label);
     var lclPoi = {
       label : poi.label,
-      description : poi.description
+      description : poi.description,
+      beginTime : _beginTime,
+      endTime : _endTime
     };
     if(typeof localStorage != 'undefined'){
      var poiToStore = JSON.stringify(lclPoi);
@@ -64,7 +66,7 @@ var timeline = {
      alert('Monsieur vous devriez penser a changer de navigateur!!');
    }
     
-    this.activities.push(poi);
+    this.activities.push(lclPoi);
     this.display();
   },
   
