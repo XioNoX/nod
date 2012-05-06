@@ -110,6 +110,12 @@ function initMap() {
     });
 }
 
+function addCurrentPoiInTimeline() {
+  if(currentMarker != null) {
+    timeline.addActivity(currentMarker.poi);
+  }
+}
+
 $(document).ready(
   function() {
     // bind all the form where the data-remote is setted with an ajax request
