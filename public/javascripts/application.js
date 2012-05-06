@@ -22,7 +22,7 @@ var ajaxFormOptions = {
         marker.poi = poi;
         marker.on("dblclick", function(event) {
 	  // Doesn't work.
-          timeline.addActivity(marker.poi);
+          timeline.addActivity(this.poi);
         }, false);
         marker.on("click", function(event) { 
              if (currentMarker != null) {
