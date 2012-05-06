@@ -11,7 +11,7 @@ var timeline = {
     //TODO get all the activities in the local database 
     // DEBUG
     //localStorage.clear();
-    existsInDatabase = this.getElementsFromLocalStorage();
+    //existsInDatabase = this.getElementsFromLocalStorage();
     //TODO get the start and end time of the timeline in the database 
     //if there is no timeline in the database
     if (!existsInDatabase) {

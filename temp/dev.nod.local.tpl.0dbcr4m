@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="public/stylesheets/application.css" />
+  <script type="text/javascript" src="public/javascripts/jquery.js"></script>
+  <script type="text/javascript" src="public/javascripts/jquery.form.js"></script>
+  <script type="text/javascript" src="public/javascripts/application.js"></script>
+  <title>Let's Go</title>
+</head>
+
+<body>
+  <h1>J'ai entendu dire que vous vouliez découvrir Nantes</h1>
+<h2> Mais alors que voulez vous faire ? </h2>
+<form name="input" action="getActivities" data-remote=true  method="POST">
+  <input name="value" type="text"/>
+  <input type="submit"/>
+</form>
+<div id="felix">
+
+</div>
+
+
+</body>
+
+</html>
