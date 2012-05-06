@@ -11,7 +11,7 @@ var timeline = {
     //TODO get all the activities in the local database 
     // DEBUG
     //localStorage.clear();
-    //existsInDatabase = this.getElementsFromLocalStorage();
+    existsInDatabase = this.getElementsFromLocalStorage();
     //TODO get the start and end time of the timeline in the database 
     //if there is no timeline in the database
     if (!existsInDatabase) {
@@ -41,7 +41,7 @@ var timeline = {
       var nameDiv = document.createElement("div");
       timeDiv.className = "time";
       nameDiv.className = "name";
-      $(timeDiv).html(activity.beginTime+" - "+activity.endTime);
+      $(timeDiv).html(activity.beginTime+"h - "+activity.endTime+" h");
       $(nameDiv).html(activity.label);
       listElement.appendChild(timeDiv);
       listElement.appendChild(nameDiv);
@@ -53,15 +53,17 @@ var timeline = {
   addActivity:function(poi,_beginTime, _endTime) {
     console.log(poi.label);
     var lclPoi = {
-      label : poi.label,
-      description : poi.description,
-      beginTime : _beginTime,
-      endTime : _endTime
+      "label" : poi.label,
+      "description" : poi.description,
+      "beginTime" : _beginTime,
+      "endTime" : _endTime
     };
     if(typeof localStorage != 'undefined'){
      var poiToStore = JSON.stringify(lclPoi);
      console.log(poiToStore);
+     
      localStorage.setItem('poi'+localStorage.length,poiToStore);
+     console.log(localStorage.length);
    } else {
      alert('Monsieur vous devriez penser a changer de navigateur!!');
    }
@@ -72,16 +74,18 @@ var timeline = {
   
   getElementsFromLocalStorage:function() {
     if(typeof localStorage != 'undefined'){
+      console.log(localStorage,length);
       if(localStorage.length > 0){
 	for(var i=0;i<localStorage.length;i++){
-	  alert(JSON.parse(localStorage[i]));
-	} 
-	return true;;
-      } else {
-	  alert('Monsieur vous devriez penser a changer de navigateur!!');
-	  return false;
+	  console.log(i);
+	  console.log(localStorage.getItem("poi"+i));
+	  curPOI =JSON.parse(localStorage.getItem("poi"+i));
+	  this.activities.push(curPOI);
+	}
+      this.display();
+      return true;
       }
+     return false;
     }
-    return false;
   },
 };
