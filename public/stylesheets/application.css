@@ -17,7 +17,6 @@ body {
   background-color:#4b4b4b;
   color:white;
   height:100%;
-  width:calc(100% - 235px);
   margin:0 0 0 0;/*235px;*/
 }
 
@@ -52,15 +51,15 @@ h1, h2 {
   background:#1c9427 url(../images/timeline.png) no-repeat 5px center;
 }
 
-#timeline-content {
-  margin:5px;
-  border-left:white solid 3px;
-height:100%;
-}
-#timeline-content ul {
-  list-style-type:none;
-  padding:5px;
-}
+/*TODO find alternative to calc for Chrome */
+#accordion-wrapper { height:-moz-calc(100% - 73px); height:calc(100% - 73px); height:-o-calc(100% - 73px); height:-webkit-calc(100% - 73px); }
+#timeline-content { position:relative; margin:5px; }
+#timeline-content ul { list-style-type:none; padding:0 0 0 5px; }
+#timeline-hours-list {border-left:transparent solid 3px; }
+#timeline-hours-list .hour-marker { text-align:right; border-top:solid 1px gray; height:4em;}
+#timeline-hours-list.editing .hour-marker:hover { background-color:green; }
+#timeline-activities-list { position:absolute; top:0; margin-top:0 }
+
 
 /**** DESCRIPTION PANEL ****/
 #description { display:none; overflow:hidden; position:relative; height:150px; top:-150px; z-index:50; margin-left:236px; width:calc(100% - 236px); }

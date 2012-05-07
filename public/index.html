@@ -26,27 +26,33 @@
       <a href="#">Où suis-je ?</a>
     </div>
 
-    <div id="accordion">
-      <h3 class="filter">Filtrer</h3>
-      <div>
-        
-        <form id="filter-form" action="http://api.naonod.com/activities" data-remote=true  method="POST">
-          <input type="checkbox" name="restaurants" onchange="$('#filter-form').submit();"/>Restaurants<br/>
-          <input type="checkbox" name="parks" onchange="$('#filter-form').submit();"/>Parks<br/>
-        </form>
+    <div id="accordion-wrapper">
+      <div id="accordion">
+        <h3 class="filter">Filtrer</h3>
+        <div>
+          
+          <form id="filter-form" action="http://api.naonod.com/activities" data-remote=true  method="POST">
+            <input type="checkbox" name="restaurants" onchange="$('#filter-form').submit();"/>Restaurants<br/>
+            <input type="checkbox" name="parks" onchange="$('#filter-form').submit();"/>Parks<br/>
+          </form>
 
-      </div>
+        </div>
 
-      <h3 class="timeline">Timeline <button onclick="addCurrentPoiInTimeline();"> + </button></h3>
-      <div id="time-choices">
-	<form id="time-choices-form" action="#"  method="POST">
-	De :<input type="text" name="begin-time" size="5" value=""/> a :<input type="text" name="end-time" size="5" value=""/>
-	<input type="button" value='Valider' onclick="createTimelinePOIObject();"/> 
-	</form>
-      </div>
-      <div id="timeline-content">
-        <ul id="timeline-activities-list">
-        </ul>
+        <h3 class="timeline">Timeline <button onclick="addCurrentPoiInTimeline();"> + </button></h3>
+        <div>
+          <div id="time-choices">
+            <!--<form id="time-choices-form" action="#"  method="POST">
+            De :<input type="text" name="begin-time" size="5" value=""/> a :<input type="text" name="end-time" size="5" value=""/>
+            <input type="button" value='Valider' onclick="createTimelinePOIObject();"/> 
+            </form>-->
+          </div>
+          <div id="timeline-content">
+            <div id="timeline-hours-list">
+            </div>
+            <!--<div id="timeline-activities-list">
+            </div>-->
+          </div>
+        </div>
       </div>
     </div>
 
