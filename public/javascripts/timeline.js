@@ -94,15 +94,19 @@ var timeline = {
 
   },*/
 
-  setEditing:function() {
-    this.container.className = "editing";
-    var hourMarkers = $(".editing .hour-marker");
+
+setEditing:function(bool_editing) {
+    var editing = bool_editing || bool_editing == undefined;
+    this.container.className = editing ? "editing" : "";
+    var hourMarkers = $(".hour-marker");
     hourMarkers.unbind("click");
-    hourMarkers.click(function(evt) {
-      var start = this.getAttribute("data-starttime");
-      var end = this.getAttribute("data-endtime");
-      timeline.addActivity(currentMarker.poi, start, end);
-    });
+    if (editing) {
+      hourMarkers.click(function(evt) {
+        var start = this.getAttribute("data-starttime");
+        var end = this.getAttribute("data-endtime");
+        timeline.addActivity(currentMarker.poi, start, end);
+      });
+    }
   },
   
   addActivity:function(poi,_beginTime, _endTime) {
@@ -124,12 +128,13 @@ var timeline = {
     
     this.activities.push(lclPoi);
     this.displayActivity(lclPoi);
+    this.setEditing(false);
   },
 
   deleteActivity:function(activity) {
     var index = this.activities.indexOf(activity); 
     if(index != -1) { 
-      //TODO delete in the localStorage
+      //TODO jerem delete in the localStorage
       this.activities.splice(index, 1);
       this.clear();
       this.display();

@@ -121,12 +121,12 @@ function addCurrentPoiInTimeline() {
 }
 
 
-function createTimelinePOIObject(){
+/*function createTimelinePOIObject(){
   var timeDebutInput = document.getElementsByName("begin-time")[0].value;
   var timeEndInput = document.getElementsByName("end-time")[0].value;
   timeline.addActivity(currentMarker.poi, timeDebutInput, timeEndInput);
   
-}
+}*/
 
 $(document).ready(
   function() {
