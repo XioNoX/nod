@@ -47,7 +47,6 @@ var timeline = {
     }
   },
 
-
   displayActivity:function(activity) {
     var hourContainer = $(".hour-marker[data-starttime="+activity.beginTime+"]");
     var activityDiv = document.createElement("div");
@@ -58,7 +57,10 @@ var timeline = {
       timeline.deleteActivity(activity);
     });
     activityDiv.className = "activity";
-    activityDiv.innerHTML = activity.label;
+    activityDiv.addEventListener("click", function(evt) {
+      showDetails(activity);
+    });
+    activityDiv.innerHTML = activity.poi.label;
     activityDiv.appendChild(deleteSpan);
     hourContainer.append(activityDiv);
   },
@@ -111,8 +113,7 @@ setEditing:function(bool_editing) {
   
   addActivity:function(poi,_beginTime, _endTime) {
     var lclPoi = {
-      "label" : poi.label,
-      "description" : poi.description,
+      "poi" : poi,
       "beginTime" : _beginTime,
       "endTime" : _endTime
     };

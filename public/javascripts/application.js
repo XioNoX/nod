@@ -79,6 +79,13 @@ function closeDescription() {
 function showDragMessage() {
 }
 
+//show the popup of the details of the activity (time, tan stops, descriptions ...)
+function showDetails(timelineActivity) {
+  //$.ajax({url:"http://api.naonod.com/pois/"+timelineActivity.poi.id+"", 
+  $.ajax({url:"http://localhost:8888/nod/pois/"+timelineActivity.poi.id+"", 
+          success:function(data, textStatus, xhr) {alert("ceci monsieur sont les arret de tan proche de votre activité : \n"+data);}});
+}
+
 //returns a function generated from a poi
 //the returned function take an event as a parameter 
 //the returned function is initialized with a poi thanks to a closure
