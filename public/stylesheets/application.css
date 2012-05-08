@@ -58,7 +58,7 @@ h1, h2 {
 #timeline-hours-list {border-left:transparent solid 3px; }
 #timeline-hours-list .hour-marker { position:relative; text-align:right; border-top:solid 1px gray; height:4em;}
 #timeline-hours-list .hour-marker .activity { position:absolute; top:0; text-align:left; height:98%; width:88%; background-color:rgba(28, 148, 39, 0.5); border:solid rgba(28, 148, 39, 1) 2px; border-radius:10px; }
-#timeline-hours-list .hour-marker .activity span.delete { display:none; cursor:pointer; position:absolute; right:5px; }
+#timeline-hours-list .hour-marker .activity span.delete { display:none; cursor:pointer; position:absolute; top:0; right:5px; }
 #timeline-hours-list .hour-marker .activity:hover span.delete { display:inline; }
 #timeline-hours-list.editing .hour-marker:hover { cursor:pointer; background-color:green; }
 #timeline-activities-list { position:absolute; top:0; margin-top:0 }
