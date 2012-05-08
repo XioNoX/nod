@@ -2,7 +2,6 @@
 header("Access-Control-Allow-Origin: *");
 require_once "lib/base.php";
 require_once "controllers/pois.php";
-require_once "controllers/parks.php";
 require_once "controllers/activities.php";
 
 require_once "config.php";
@@ -10,6 +9,7 @@ require_once "config.php";
 #Defining all the routes of the application 
 F3::route('POST /activities', 'activities::compute');
 F3::route('GET /activities', 'activities::compute'); //XXX For debug purpose only
+F3::route('GET /pois/@id', 'pois::single');
 
 
 #API routes 
