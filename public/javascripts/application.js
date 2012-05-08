@@ -81,8 +81,7 @@ function showDragMessage() {
 
 //show the popup of the details of the activity (time, tan stops, descriptions ...)
 function showDetails(timelineActivity) {
-  //$.ajax({url:"http://api.naonod.com/pois/"+timelineActivity.poi.id+"", 
-  $.ajax({url:"http://localhost:8888/nod/pois/"+timelineActivity.poi.id+"", 
+  $.ajax({url:"http://api.naonod.com/pois/"+timelineActivity.poi.id+"", 
           success:function(data, textStatus, xhr) {alert("ceci monsieur sont les arret de tan proche de votre activité : \n"+data);}});
 }
 
