@@ -18,7 +18,7 @@ var ajaxFormOptions = {
         poi = arrayOfPoi[index];
         var icon = iconForPoi(poi);
         var latLong = new L.LatLng(poi.latitude, poi.longitude);
-        var marker = new L.Marker(latLong, {icon:icon}).bindPopup("Pour m'ajouter à votre timeline faites moi glisser jusqu'à elle ");
+        var marker = new L.Marker(latLong, {icon:icon});
         marker.poi = poi;
         marker.addEventListener("click", function(event) { 
              openTimeline();
@@ -132,9 +132,11 @@ $(document).ready(
   function() {
     // bind all the form where the data-remote is setted with an ajax request
     $('form[data-remote]').ajaxForm(ajaxFormOptions);
+
+    $('#accordion-wrapper').height($(document.body).height() - 73);
     $('#accordion').accordion({fillSpace:true});
 
-    timeline.init({backgroundContainerId:"timeline-hours-list", containerId:"timeline-activities-list"});
+    timeline.init({containerId:"timeline-hours-list"});
     timeline.display();
 
     //adding the dropping event on the timeline
