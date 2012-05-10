@@ -22,18 +22,18 @@ var ajaxFormOptions = {
         var marker = new L.Marker(latLong, {icon:icon});
         marker.poi = poi;
         marker.addEventListener("click", function(event) { 
-             openTimeline();
-             timeline.setEditing();
-             if (currentMarker != null) {
-                currentMarker.setIcon(iconForPoi(this.poi));
-             }
-             currentMarker = this;
-             this.setIcon(new NodIcon("images/map/selected-icon.png"));
-             openDescription(this.poi);
-             return true;
+           openTimeline();
+           timeline.setEditing();
+           if (currentMarker != null) {
+              currentMarker.setIcon(iconForPoi(this.poi));
+           }
+           currentMarker = this;
+           var icon = new NodIcon("images/map/selected-icon.png");
+           this.setIcon(icon);
+           openDescription(this.poi);
+           return true;
         }, false);
         //marker.addEventListener("dblclick", function(event) {timeline.addActivity(this.poi);}, false);
-	marker.addEventListener("dblclick", function(event) {addCurrentPoiInTimeline();}, false);
         markerLayer.addLayer(marker);
       }
       map.addLayer(markerLayer);
@@ -73,11 +73,12 @@ function openDescription(poi) {
     descContainer.html(poi.description);
     adressContainer.html(poi.address); 
     tanContainer.html("");
+    showAjaxLoader("poi-tan-stops");
 
     tanXhr = $.ajax({url:"http://api.naonod.com/pois/"+poi.id+"", 
           success:function(data, textStatus, xhr) {
             var htmlElement = processTanInfos(JSON.parse(data));
-            tanContainer.append(htmlElement);
+            tanContainer.html(htmlElement);
           }});
 }
 
@@ -90,6 +91,17 @@ function showDragMessage() {
 
 //show the popup of the details of the activity (time, tan stops, descriptions ...)
 function showDetails(timelineActivity) {
+}
+
+function showAjaxLoader(containerId) {
+  var cl = new CanvasLoader(containerId);
+  cl.setColor('#a8a8a8'); // default is '#000000'
+  cl.setShape('spiral'); // default is 'oval'
+  cl.setDiameter(36); // default is 40
+  cl.setDensity(30); // default is 40
+  cl.setSpeed(1); // default is 2
+  cl.setFPS(25); // default is 24
+  cl.show(); // Hidden by default
 }
 
 function processTanInfos(tanInfos) {
@@ -109,19 +121,10 @@ function processTanInfos(tanInfos) {
 }
 
 function initMap() {
-    // Define the map to use from MapBox
-    // This is the TileJSON endpoint copied from the embed button on your map
     var url = 'http://a.tiles.mapbox.com/v3/xionox.map-ef0s39bd.jsonp';
-
-    // Make a new Leaflet map in your container div
     map = new L.Map('mapbox')  // container's id="mapbox"
-
-    // Center the map on Nantes, DC, at zoom 15
     .setView(new L.LatLng(47.215, -1.541), 13);
-
-    // Get metadata about the map from MapBox
     wax.tilejson(url, function(tilejson) {
-        // Add MapBox Streets as a base layer
         map.addLayer(new wax.leaf.connector(tilejson));
     });
 }

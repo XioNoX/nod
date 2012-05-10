@@ -26,28 +26,16 @@ h1, h2 {
 
 #description > table, #description .close-button, #sidebar {background:rgba(75,75,75,0.88);} 
 #sidebar { z-index:100; position:absolute; left:0; width:235px; height:100%;}
+#canvasLoader { position:relative; top: 10px; left: 10px; }
 
 /**** MAP ****/
 .leaflet-popup-content { color:#4b4b4b; }
 #mapbox { height:100%; width:100%;}
 
-#accordion {
-}
-
-#accordion h3 {
-  cursor:pointer;
-  font-size:20px;
-  padding:10px 40px;
-  margin:0;
-}
-
-#accordion h3.filter {
-  background:#1091db url(../images/filter.png) no-repeat 5px center;
-}
-
-#accordion h3.timeline {
-  background:#1c9427 url(../images/timeline.png) no-repeat 5px center;
-}
+#accordion {}
+#accordion h3 { cursor:pointer; font-size:20px; padding:10px 40px; margin:0; }
+#accordion h3.filter { background:#1091db url(../images/filter.png) no-repeat 5px center; }
+#accordion h3.timeline { background:#1c9427 url(../images/timeline.png) no-repeat 5px center; }
 
 /*TODO find alternative to calc for Chrome */
 #accordion-wrapper { height:-moz-calc(100% - 73px); height:calc(100% - 73px); height:-o-calc(100% - 73px); height:-webkit-calc(100% - 73px); }
