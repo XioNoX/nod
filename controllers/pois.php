@@ -5,7 +5,6 @@ class pois {
 /*called for the url /poi/(id)
 return a single poi */
    static function single() {
-     //TODO Get tan informations
       $id = F3::get('PARAMS["id"]');
       $poi = DB::sql("SELECT * from points_of_interest
           INNER JOIN gps 

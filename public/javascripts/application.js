@@ -5,6 +5,7 @@ var NodIcon = L.Icon.extend({
 });
 
 var currentMarker = null;
+var tanXhr = null;
 var map = null; //the main map of the page
 var markerLayer = null;
 
@@ -28,7 +29,6 @@ var ajaxFormOptions = {
              }
              currentMarker = this;
              this.setIcon(new NodIcon("images/map/selected-icon.png"));
-             initDraggingEventListeners();
              openDescription(this.poi);
              return true;
         }, false);
@@ -37,8 +37,6 @@ var ajaxFormOptions = {
         markerLayer.addLayer(marker);
       }
       map.addLayer(markerLayer);
-      //registrering the event handler for the drag and drop
-      initDraggingEventListeners();
     }
   } 
 };
@@ -63,13 +61,24 @@ function openTimeline() {
 }
 
 function openDescription(poi) {
-    var containerDiv = $("#description");
-    var titleDiv = $("#poi-title");
-    var descDiv = $("#poi-description");
+    if(tanXhr != null) tanXhr.abort();
+    var container= $("#description");
+    var titleContainer = $("#poi-title");
+    var descContainer = $("#poi-description");
+    var adressContainer = $("#poi-address");
+    var tanContainer = $("#poi-tan-stops");
 
-    containerDiv.show("slide", {direction:"down"}, 500);
-    titleDiv.html("<h2>"+poi.label+"</h2>");
-    descDiv.html(poi.description);
+    container.show("slide", {direction:"down"}, 500);
+    titleContainer.html(poi.label);
+    descContainer.html(poi.description);
+    adressContainer.html(poi.address); 
+    tanContainer.html("");
+
+    tanXhr = $.ajax({url:"http://api.naonod.com/pois/"+poi.id+"", 
+          success:function(data, textStatus, xhr) {
+            var htmlElement = processTanInfos(JSON.parse(data));
+            tanContainer.append(htmlElement);
+          }});
 }
 
 function closeDescription() {
@@ -81,25 +90,23 @@ function showDragMessage() {
 
 //show the popup of the details of the activity (time, tan stops, descriptions ...)
 function showDetails(timelineActivity) {
-  $.ajax({url:"http://api.naonod.com/pois/"+timelineActivity.poi.id+"", 
-          success:function(data, textStatus, xhr) {alert("ceci monsieur sont les arret de tan proche de votre activité : \n"+data);}});
 }
 
-//returns a function generated from a poi
-//the returned function take an event as a parameter 
-//the returned function is initialized with a poi thanks to a closure
-/*function generateMarkerClickCallback(poi) {
-  var generatedFunction = function(event) {
-    var containerDiv = $("#description");
-    var titleDiv = $("#poi-title");
-    var descDiv = $("#poi-description");
-
-    containerDiv.show("slide", {direction:"down"}, 500);
-    titleDiv.html("<h2>"+poi.label+"</h2>");
-    descDiv.html(poi.description);
+function processTanInfos(tanInfos) {
+  var htmlElement = document.createElement("span");
+  for(var i in tanInfos) {
+    var info = tanInfos[i];
+    var par = document.createElement("p"); 
+    par.innerHTML = info.libelle + " à " + info.distance + " (";
+    for (var j in info.ligne) {
+      var ligne = info.ligne[j];
+      par.innerHTML += ligne.numLigne+" ";
+    }
+    par.innerHTML += ")";
+    htmlElement.appendChild(par);
   }
-  return generatedFunction;
-}*/
+  return htmlElement;
+}
 
 function initMap() {
     // Define the map to use from MapBox
