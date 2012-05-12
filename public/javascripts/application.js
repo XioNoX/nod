@@ -30,6 +30,7 @@ var ajaxFormOptions = {
            currentMarker = this;
            var icon = new NodIcon("images/map/selected-icon.png");
            this.setIcon(icon);
+           console.log(this.poi);
            openDescription(this.poi);
            return true;
         }, false);
@@ -71,7 +72,7 @@ function openDescription(poi) {
     container.show("slide", {direction:"down"}, 500);
     titleContainer.html(poi.label);
     descContainer.html(poi.description);
-    adressContainer.html(poi.address); 
+    adressContainer.html(poi.address + "<br/>" + poi.zip + " " + poi.city); 
     tanContainer.html("");
     showAjaxLoader("poi-tan-stops");
 
@@ -148,7 +149,15 @@ $(document).ready(
   function() {
     // bind all the form where the data-remote is setted with an ajax request
     $('form[data-remote]').ajaxForm(ajaxFormOptions);
-
+    $('.filter-button').each(function(index, buttonElement) {
+      buttonElement.addEventListener("click", function(evt) {
+        checkboxName = this.id.match(/filter-(.*)/)[1];
+        var cb = $("#filter-form :input[name='"+checkboxName+"']")[0];
+        cb.checked = !cb.checked; 
+        cb.checked ? this.classList.add("selected") : this.classList.remove("selected");
+      }, false);
+    });
+    
     $('#accordion-wrapper').height($(document.body).height() - 73);
     $('#accordion').accordion({fillSpace:true});
 

@@ -37,7 +37,17 @@ h1, h2 {
 #accordion h3.filter { background:#1091db url(../images/filter.png) no-repeat 5px center; }
 #accordion h3.timeline { background:#1c9427 url(../images/timeline.png) no-repeat 5px center; }
 
-/*TODO find alternative to calc for Chrome */
+#filter-form { text-align:center; padding-top:10px; }
+.filter-button { cursor:pointer; height:48px; width:48px; border-radius:5px; background:#616161; border:solid #CCC 2px; }
+#filter-parks { background:#616161 url(../images/form/parks.png) center no-repeat; }
+#filter-parks.selected { border-color:#0fa61d; }
+#filter-restaurants { background:#616161 url(../images/form/restaurants.png) center no-repeat; }
+#filter-restaurants.selected { border-color:#0fa61d; }
+#filter-bars { background:#616161 url(../images/form/bars.png) center no-repeat; }
+#filter-bars.selected { border-color:#0fa61d; }
+#filter-cinemas { background:#616161 url(../images/form/cinemas.png) center no-repeat; }
+#filter-cinemas.selected { border-color:#0fa61d; }
+
 #accordion-wrapper { height:-moz-calc(100% - 73px); height:calc(100% - 73px); height:-o-calc(100% - 73px); height:-webkit-calc(100% - 73px); }
 #timeline-content { position:relative; margin:5px; }
 #timeline-content ul { list-style-type:none; padding:0 0 0 5px; }
@@ -59,7 +69,7 @@ h1, h2 {
 #description .close-container { position:relative; height:30px; overflow:hidden;}
 #description .close-button { position:absolute; right:0; font-size:30px; cursor:pointer; border-radius:25px 0 0 0; padding:0 10px 0 10px }
 #description .close-button:before { content:"⨯" }
-#description-first-col { width:30%; }
+#description-first-col { width:30%; border-right:solid gray 2px; }
 
 #poi-tan-stops { background:url(../images/tram.png) no-repeat; padding-left:45px; min-height:63px; }
 #poi-tan-stops p { margin:0; }

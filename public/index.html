@@ -33,10 +33,17 @@
         <div>
           
           <form id="filter-form" action="http://api.naonod.com/activities" data-remote=true  method="POST">
-            <input type="checkbox" name="parks" onchange="$('#filter-form').submit();"/>Parks<br/>
-            <!--<input type="checkbox" name="cultural_venues" onchange="$('#filter-form').submit();"/>Lieux culturels<br/>-->
-            <input type="checkbox" name="restaurants" onchange="$('#filter-form').submit();"/>Restaurants<br/>
-            <input type="checkbox" name="bars" onchange="$('#filter-form').submit();"/>Bars<br/>
+            <button id="filter-bars" class="filter-button"></button>
+            <button id="filter-restaurants" class="filter-button"></button>
+            <button id="filter-parks" class="filter-button"></button>
+            <button id="filter-cinemas" class="filter-button"></button>
+            <div style="display:none;">
+              <input type="checkbox" name="parks"/> 
+              <input type="checkbox" name="cinemas"/> 
+              <!--<input type="checkbox" name="cultural_venues"/>-->
+              <input type="checkbox" name="restaurants"/>
+              <input type="checkbox" name="bars"/>
+            </div>
           </form>
 
         </div>
