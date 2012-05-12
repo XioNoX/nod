@@ -30,7 +30,6 @@ var ajaxFormOptions = {
            currentMarker = this;
            var icon = new NodIcon("images/map/selected-icon.png");
            this.setIcon(icon);
-           console.log(this.poi);
            openDescription(this.poi);
            return true;
         }, false);
@@ -107,17 +106,26 @@ function showAjaxLoader(containerId) {
 
 function processTanInfos(tanInfos) {
   var htmlElement = document.createElement("span");
+  var hiddenSpan = document.createElement("span");
+  hiddenSpan.style.display = "none";
   for(var i in tanInfos) {
     var info = tanInfos[i];
-    var par = document.createElement("p"); 
-    par.innerHTML = info.libelle + " à " + info.distance + " (";
+    var stop = document.createElement("p"); 
+    var lines = document.createElement("p"); 
+    stop.innerHTML = info.libelle + " à " + info.distance;
     for (var j in info.ligne) {
       var ligne = info.ligne[j];
-      par.innerHTML += ligne.numLigne+" ";
+      lines.innerHTML += ligne.numLigne+" ";
     }
-    par.innerHTML += ")";
-    htmlElement.appendChild(par);
+    if(i == "0") {
+      htmlElement.appendChild(stop);
+      htmlElement.appendChild(lines);
+    } else {
+      hiddenSpan.appendChild(stop);
+      hiddenSpan.appendChild(lines);
+    }
   }
+  htmlElement.appendChild(hiddenSpan);
   return htmlElement;
 }
 
