@@ -80,7 +80,7 @@ function openDescription(poi) {
     var adressContainer = $("#poi-address");
     var tanContainer = $("#poi-tan-stops");
 
-    container.show("slide", {direction:"down"}, 500);
+    if(container.css("display") == "none") container.show("slide", {direction:"down"}, 500);
     titleContainer.html(poi.label);
     descContainer.html(poi.description);
     adressContainer.html(poi.address + "<br/>" + poi.zip + " " + poi.city); 
@@ -95,7 +95,9 @@ function openDescription(poi) {
 }
 
 function closeDescription() {
-  $("#description").hide("slide", {direction:"down"}, 500);
+  var descriptionDiv = $("#description");
+  test = descriptionDiv;
+  if(descriptionDiv.css("display") != "none") descriptionDiv.hide("slide", {direction:"down"}, 500);
 }
 
 function showDragMessage() {
