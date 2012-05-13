@@ -56,8 +56,21 @@ function initDraggingEventListeners() {
   //$(".leaflet-marker-icon").each(function(index, element) {addDraggingEventListener(element)}, false);
 }
 
+
+function openLeftDrawer(element) {
+  var jElement = $(element);
+  console.log(jElement.css("right"));
+  if (jElement.css("right") == "0px") jElement.animate({right:"100%"});
+  else jElement.animate({right:"0"});
+  
+}
+
 function openTimeline() {
-  $("#accordion").accordion("activate", ".timeline");
+
+}
+
+function openFilters() {
+
 }
 
 function openDescription(poi) {
@@ -165,10 +178,13 @@ $(document).ready(
         cb.checked ? this.classList.add("selected") : this.classList.remove("selected");
       }, false);
     });
-    
-    $('#accordion-wrapper').height($(document.body).height() - 73);
-    $('#accordion').accordion({fillSpace:true});
 
+    $(".left-drawer h3").each(function(index, element) {
+      element.addEventListener("click", function(event) {
+        openLeftDrawer(this.parentNode);
+      }, false);
+    });
+    
     timeline.init({containerId:"timeline-hours-list"});
     timeline.display();
 

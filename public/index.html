@@ -13,60 +13,43 @@
   <script type="text/javascript" src="javascripts/apiConfig.js"></script>
   <script type="text/javascript" src="javascripts/application.js"></script>
   <script src="http://heartcode-canvasloader.googlecode.com/files/heartcode-canvasloader-min-0.9.1.js"></script>
-  <title>Let's Go</title>
+  <title>Naonod</title>
     
 </head>
 
 <body>
-  <div id="sidebar">
+  <div id="header">
     <div id="logo">
     </div>
-
-    <div id="help">
-      <a href="#">Aide</a> |
-      <a href="#">Où suis-je ?</a>
-    </div>
-
-    <div id="accordion-wrapper">
-      <div id="accordion">
-        <h3 class="filter">Filtrer</h3>
-        <div>
-          
-          <form id="filter-form" action="http://api.naonod.com/activities" data-remote=true  method="POST">
-            <button id="filter-bars" class="filter-button"></button>
-            <button id="filter-restaurants" class="filter-button"></button>
-            <button id="filter-parks" class="filter-button"></button>
-            <!--<button id="filter-cinemas" class="filter-button"></button>-->
-            <div style="display:none;">
-              <input type="checkbox" name="parks"/> 
-              <input type="checkbox" name="cinemas"/> 
-              <!--<input type="checkbox" name="cultural_venues"/>-->
-              <input type="checkbox" name="restaurants"/>
-              <input type="checkbox" name="bars"/>
-            </div>
-          </form>
-
+  </div>
+  <div id="sidebar">
+    <div class="left-drawer" id="filters">
+      <h3 class="filter"></h3>
+      <form id="filter-form" action="http://api.naonod.com/activities" data-remote=true  method="POST">
+        <button id="filter-bars" class="filter-button"></button>
+        <button id="filter-restaurants" class="filter-button"></button>
+        <button id="filter-parks" class="filter-button"></button>
+        <button id="filter-cinemas" class="filter-button"></button>
+        <div style="display:none;">
+          <input type="checkbox" name="parks"/> 
+          <input type="checkbox" name="cinemas"/> 
+          <input type="checkbox" name="cultural_venues"/>
+          <input type="checkbox" name="restaurants"/>
+          <input type="checkbox" name="bars"/>
         </div>
-
-        <h3 class="timeline">Timeline <!--<button onclick="addCurrentPoiInTimeline();"> + </button>--></h3>
+      </form>
+    </div>
+    <div class="left-drawer">
+      <h3 class="timeline"></h3>
         <div>
-          <div id="time-choices">
-            <!--<form id="time-choices-form" action="#"  method="POST">
-            De :<input type="text" name="begin-time" size="5" value=""/> a :<input type="text" name="end-time" size="5" value=""/>
-            <input type="button" value='Valider' onclick="createTimelinePOIObject();"/> 
-            </form>-->
-          </div>
           <div id="timeline-content">
             <div id="timeline-hours-list">
             </div>
-            <!--<div id="timeline-activities-list">
-            </div>-->
           </div>
         </div>
-      </div>
     </div>
-
   </div>
+
   <div id="mapbox"></div>
   
   
