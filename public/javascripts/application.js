@@ -68,7 +68,8 @@ function openTimeline() {
 }
 
 function openFilters() {
-
+  timelineDrawer = document.getElementById("filters-drawer");
+  openLeftDrawer(timelineDrawer, true);
 }
 
 function openDescription(poi) {
@@ -188,10 +189,10 @@ $(document).ready(
     });
 
     $(".left-drawer h3").each(function(index, element) {
-      element.addEventListener("click", function(event) {
-        openLeftDrawer(this.parentNode);
-      }, false);
+      element.addEventListener("click", function(event) { openLeftDrawer(this.parentNode); }, false);
     });
+
+    openFilters();
     
     timeline.init({containerId:"timeline-hours-list"});
     timeline.display();
