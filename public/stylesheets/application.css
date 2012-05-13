@@ -30,7 +30,7 @@ h1, h2 { text-shadow:0px 1px 0px white; }
 #header { height:32px; width:100%; position:absolute; top:0; z-index:150; }
 #logo { background:url(../images/logo.png) no-repeat; height:100%; }
 
-#description > table, #description .close-button, #header {background:rgba(75,75,75,0.88);} 
+#description > table, #description .close-button, .left-drawer, #header {background:rgba(75,75,75,0.88);} 
 #sidebar { z-index:100; position:absolute; left:0; width:235px; height:100%; }
 #old-sidebar { display:none; }
 #canvasLoader { position:relative; top: 10px; left: 10px; }
@@ -85,6 +85,9 @@ h1, h2 { text-shadow:0px 1px 0px white; }
 #description .close-button { position:absolute; right:0; font-size:30px; cursor:pointer; border-radius:25px 0 0 0; padding:0 10px 0 10px }
 #description .close-button:before { content:"⨯" }
 #description-first-col { width:30%; border-right:solid gray 2px; }
+#poi-title { margin-bottom:10px; }
+#poi-address { margin-top:0; }
+#poi-time { padding-left:42px; min-height:32px; background:url(../images/time.png) left no-repeat; }
 
 #poi-tan-stops { background:url(../images/tram.png) no-repeat; padding-left:45px; min-height:63px; }
 #poi-tan-stops p { margin:0; }
