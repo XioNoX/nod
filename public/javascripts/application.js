@@ -24,9 +24,7 @@ var ajaxFormOptions = {
         marker.addEventListener("click", function(event) { 
            openTimeline();
            timeline.setEditing();
-           if (currentMarker != null) {
-              currentMarker.setIcon(iconForPoi(this.poi));
-           }
+           deselectCurrentMarker(false);
            currentMarker = this;
            var icon = new NodIcon("images/map/selected-icon.png");
            this.setIcon(icon);
@@ -57,16 +55,16 @@ function initDraggingEventListeners() {
 }
 
 
-function openLeftDrawer(element) {
+function openLeftDrawer(element, b_open) {
   var jElement = $(element);
-  console.log(jElement.css("right"));
-  if (jElement.css("right") == "0px") jElement.animate({right:"100%"});
+  if (jElement.css("right") == "0px" && !b_open) jElement.animate({right:"100%"});
   else jElement.animate({right:"0"});
   
 }
 
 function openTimeline() {
-
+  timelineDrawer = document.getElementById("timeline-drawer");
+  openLeftDrawer(timelineDrawer, true);
 }
 
 function openFilters() {
@@ -146,6 +144,9 @@ function initMap() {
     var url = 'http://a.tiles.mapbox.com/v3/xionox.map-ef0s39bd.jsonp';
     map = new L.Map('mapbox')  // container's id="mapbox"
     .setView(new L.LatLng(47.215, -1.541), 13);
+    document.getElementById("mapbox").addEventListener("click", function(evt) {
+        deselectCurrentMarker(true);
+    }, false);
     wax.tilejson(url, function(tilejson) {
         map.addLayer(new wax.leaf.connector(tilejson));
     });
@@ -158,6 +159,13 @@ function addCurrentPoiInTimeline() {
   }
 }
 
+function deselectCurrentMarker(b_closeDescription) {
+  if (currentMarker != null) {
+    currentMarker.setIcon(iconForPoi(currentMarker.poi));
+    currentMarker = null;
+  }
+  if(b_closeDescription) closeDescription();
+}
 
 /*function createTimelinePOIObject(){
   var timeDebutInput = document.getElementsByName("begin-time")[0].value;
