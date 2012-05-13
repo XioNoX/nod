@@ -62,6 +62,14 @@ h1, h2 { text-shadow:0px 1px 0px white; }
 #filter-bars.selected { border-color:#0fa61d; }
 #filter-cinemas { background:#616161 url(../images/form/cinemas.png) center no-repeat; }
 #filter-cinemas.selected { border-color:#0fa61d; }
+#filter-disabled { background:#616161 url(../images/form/handi.png) center no-repeat; }
+#filter-disabled.selected { border-color:#0fa61d; }
+#filter-concerts { background:#616161 url(../images/form/concerts.png) center no-repeat; }
+#filter-concerts.selected { border-color:#0fa61d; }
+#filter-cultural-venues { background:#616161 url(../images/form/cultural-venues.png) center no-repeat; }
+#filter-concerts.selected { border-color:#0fa61d; }
+#filter-small-prices { background:#616161 url(../images/form/small-prices.png) center no-repeat; }
+#filter-concerts.selected { border-color:#0fa61d; }
 
 .drawer-content { height:100%; overflow:auto; }
 #timeline-content { position:relative; margin:5px; }
