@@ -133,9 +133,13 @@ setEditing:function(bool_editing) {
   },
 
   deleteActivity:function(activity) {
-    var index = this.activities.indexOf(activity); 
+    var index = this.activities.indexOf(activity);
+    console.log(index);
     if(index != -1) { 
-      //TODO jerem delete in the localStorage
+      // Remove the item from the localstorage
+      var poiToDelete = localStorage.key(index);
+      localStorage.removeItem(poiToDelete);
+      
       this.activities.splice(index, 1);
       this.clear();
       this.display();
