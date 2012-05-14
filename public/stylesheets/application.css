@@ -30,7 +30,7 @@ h1, h2 { text-shadow:0px 1px 0px white; }
 #header { height:32px; width:100%; position:absolute; top:0; z-index:150; }
 #logo { background:url(../images/logo.png) no-repeat; height:100%; }
 
-#description > table, #description .close-button, .left-drawer, #header {background:rgba(75,75,75,0.88);} 
+#description > table, #description .close-button, .left-drawer, #header, #dropping-time {background:rgba(75,75,75,0.88);} 
 #sidebar { z-index:100; position:absolute; left:0; width:235px; height:100%; }
 #old-sidebar { display:none; }
 #canvasLoader { position:relative; top: 10px; left: 10px; }
@@ -72,10 +72,11 @@ h1, h2 { text-shadow:0px 1px 0px white; }
 #filter-concerts.selected { border-color:#0fa61d; }
 
 .drawer-content { height:100%; overflow:auto; }
-#timeline-content { position:relative; margin:5px; }
+#dropping-time { font-weight:normal; font-size:12pt; position:absolute; z-index:1000; width:200px; left:100%; padding:7px 5px; border-radius:5px; }
+#timeline-content { position:relative; margin:5px; height:100%;}
 #timeline-content ul { list-style-type:none; padding:0 0 0 5px; }
-#timeline-hours-list {border-left:transparent solid 3px; }
-#timeline-hours-list .hour-marker { position:relative; text-align:right; border-top:solid 1px gray; height:4em;}
+#timeline-hours-list {border-left:transparent solid 3px; height:100%; }
+#timeline-hours-list .hour-marker { position:relative; text-align:right; border-top:solid 1px gray; height:3.5%;}
 #timeline-hours-list .hour-marker .activity { position:absolute; top:0; text-align:left; height:98%; width:88%; background-color:rgba(28, 148, 39, 0.5); border:solid rgba(28, 148, 39, 1) 2px; border-radius:10px; }
 #timeline-hours-list .hour-marker .activity span.delete { display:none; cursor:pointer; position:absolute; top:0; right:5px; }
 #timeline-hours-list .hour-marker .activity:hover span.delete { display:inline; }

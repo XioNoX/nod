@@ -1,9 +1,17 @@
 //defining custom icons for the page 
 var NodIcon = L.Icon.extend({
   iconUrl: 'images/map/icon.png',
-  shadowUrl: 'images/map/icon-shadow.png'
+  shadowUrl: 'images/map/icon-shadow.png',
+  createIcon: function() {
+    var image = this._createIcon('icon');
+    if (!this.poi) return image;
+    addDraggingEventListener(image);
+    image.setAttribute("data-poi-id", this.poi.id);
+    return image;
+  }
 });
 
+var arrayOfPois = null;
 var currentMarker = null;
 var tanXhr = null;
 var map = null; //the main map of the page
@@ -12,26 +20,25 @@ var markerLayer = null;
 var ajaxFormOptions = { 
   success: function(responseText, textStatus, xhr, form) {
     if (textStatus === "success") {
-      var arrayOfPoi = JSON.parse(responseText);
+      arrayOfPois = JSON.parse(responseText);
       if (markerLayer) markerLayer.clearLayers();
       markerLayer = new L.LayerGroup();
-      for (index in arrayOfPoi) {
-        poi = arrayOfPoi[index];
+      for (index in arrayOfPois) {
+        poi = arrayOfPois[index];
         var icon = iconForPoi(poi);
         var latLong = new L.LatLng(poi.latitude, poi.longitude);
         var marker = new L.Marker(latLong, {icon:icon});
         marker.poi = poi;
         marker.addEventListener("click", function(event) { 
            openTimeline();
-           timeline.setEditing();
            deselectCurrentMarker(false);
            currentMarker = this;
            var icon = new NodIcon("images/map/selected-icon.png");
+           icon.poi = this.poi;
            this.setIcon(icon);
            openDescription(this.poi);
            return true;
         }, false);
-        //marker.addEventListener("dblclick", function(event) {timeline.addActivity(this.poi);}, false);
         markerLayer.addLayer(marker);
       }
       map.addLayer(markerLayer);
@@ -40,13 +47,27 @@ var ajaxFormOptions = {
 };
 
 function iconForPoi(poi) {
-  return new NodIcon("images/map/"+poi.type+"-icon.png");
+  var newIcon = new NodIcon("images/map/"+poi.type+"-icon.png");
+  newIcon.poi = poi;
+  return newIcon; 
 }
 
 function addDraggingEventListener(element) {
   element.addEventListener('dragstart', function(e) { 
     openTimeline();
     showDragMessage();
+  }, false);
+  
+  element.addEventListener('dragend', function(e) { 
+      var poiId = this.getAttribute("data-poi-id");
+      var draggedPoi = null;
+      for(var i in arrayOfPois) {
+        var currentPoi = arrayOfPois[i];
+        if (currentPoi.id == poiId) {
+          draggedPoi = currentPoi;
+        }
+      }
+      timeline.addActivity(draggedPoi, null, null);
   }, false);
 }
 
@@ -156,12 +177,6 @@ function initMap() {
 }
 
 
-// Should only play on the displaying of the time form
-function addCurrentPoiInTimeline() {
-  if(currentMarker != null) {
-  }
-}
-
 function deselectCurrentMarker(b_closeDescription) {
   if (currentMarker != null) {
     currentMarker.setIcon(iconForPoi(currentMarker.poi));
@@ -196,13 +211,11 @@ $(document).ready(
 
     openFilters();
     
-    timeline.init({containerId:"timeline-hours-list"});
+    timeline.init({containerId:"timeline-hours-list", droppingTimeContainerId:"dropping-time"});
     timeline.display();
 
     //adding the dropping event on the timeline
     var timelineDiv = document.getElementById("timeline-content");
-    timelineDiv.addEventListener("drop", function(e) { e.preventDefault(); alert("TODO"); return false; }, false); 
-    timelineDiv.addEventListener("dragover", function(e) { e.preventDefault(); }, false); 
     /***** MAP *******/
     initMap();
   }

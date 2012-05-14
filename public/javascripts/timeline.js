@@ -3,6 +3,7 @@ var timeline = {
   endTime:null,
   activities:[],
   container:null,
+  droppingTimeContainer:null,
   
   //possible options : 
   //containerId:Id of the htmlElement that will contain the timeline
@@ -12,23 +13,19 @@ var timeline = {
     // DEBUG
     //localStorage.clear();
     existsInDatabase = this.getElementsFromLocalStorage();
-    //TODO get the start and end time of the timeline in the database 
-    //if there is no timeline in the database
     if (true || !existsInDatabase) { //XXX
       this.startTime = new Date();
-      this.startTime.setHours(8);
+      this.startTime.setHours(0);
       this.startTime.setMinutes(0);
       this.startTime.setSeconds(0);
 
       this.endTime = new Date();
-      this.endTime.setHours(20);
+      this.endTime.setHours(23);
       this.endTime.setMinutes(0);
       this.endTime.setSeconds(0);
     }
-    if(options["containerId"]) {
-      this.container = document.getElementById(options["containerId"]);
-    }
     this.container = options["containerId"] ? document.getElementById(options["containerId"]) : null;
+    this.droppingTimeContainer = options["droppingTimeContainerId"] ? document.getElementById(options["droppingTimeContainerId"]) : null;
     this.displayBackground();
   },
   
@@ -41,6 +38,19 @@ var timeline = {
       var divElement = document.createElement("div");
       divElement.setAttribute("data-starttime", i);
       divElement.setAttribute("data-endtime", i+1);
+      divElement.addEventListener("drop", function(e) { 
+        e.preventDefault(); 
+      }, false); 
+      divElement.addEventListener("dragover", function(e) { 
+        e.preventDefault(); 
+        var startTime = this.getAttribute("data-starttime");
+        var droppingTimeContainer = timeline.droppingTimeContainer;
+        if(!droppingTimeContainer) return;
+        var settedStartTime = droppingTimeContainer.getAttribute("data-starttime");
+        if(settedStartTime == startTime) return;
+        droppingTimeContainer.setAttribute("data-starttime", startTime);
+        $(droppingTimeContainer).html("Ajouter l'activité à "+startTime+"h");
+      }, false); 
       $(divElement).html(i+"h");
       divElement.className = "hour-marker";
       this.container.appendChild(divElement);
@@ -97,7 +107,8 @@ var timeline = {
   },*/
 
 
-setEditing:function(bool_editing) {
+  setEditing:function(bool_editing) {
+     alert("TODO");
     var editing = bool_editing || bool_editing == undefined;
     this.container.className = editing ? "editing" : "";
     var hourMarkers = $(".hour-marker");
@@ -112,6 +123,9 @@ setEditing:function(bool_editing) {
   },
   
   addActivity:function(poi,_beginTime, _endTime) {
+    if(_beginTime == undefined && this.droppingTimeContainer) {
+      _beginTime = this.droppingTimeContainer.getAttribute("data-starttime");
+    }
     var lclPoi = {
       "poi" : poi,
       "beginTime" : _beginTime,
