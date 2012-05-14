@@ -55,6 +55,7 @@ function iconForPoi(poi) {
 function addDraggingEventListener(element) {
   element.addEventListener('dragstart', function(e) { 
     openTimeline();
+    timeline.setEditing(true);
     showDragMessage();
   }, false);
   
@@ -68,6 +69,7 @@ function addDraggingEventListener(element) {
         }
       }
       timeline.addActivity(draggedPoi, null, null);
+      timeline.setEditing(false);
   }, false);
 }
 

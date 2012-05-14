@@ -108,17 +108,12 @@ var timeline = {
 
 
   setEditing:function(bool_editing) {
-     alert("TODO");
     var editing = bool_editing || bool_editing == undefined;
-    this.container.className = editing ? "editing" : "";
-    var hourMarkers = $(".hour-marker");
-    hourMarkers.unbind("click");
+    if(this.droppingTimeContainer == null) return;
     if (editing) {
-      hourMarkers.click(function(evt) {
-        var start = this.getAttribute("data-starttime");
-        var end = this.getAttribute("data-endtime");
-        timeline.addActivity(currentMarker.poi, start, end);
-      });
+      this.droppingTimeContainer.classList.add("editing")
+    } else {
+      this.droppingTimeContainer.classList.remove("editing")
     }
   },
   
@@ -143,7 +138,6 @@ var timeline = {
     
     this.activities.push(lclPoi);
     this.displayActivity(lclPoi);
-    this.setEditing(false);
   },
 
   deleteActivity:function(activity) {

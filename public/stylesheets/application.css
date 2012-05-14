@@ -72,7 +72,8 @@ h1, h2 { text-shadow:0px 1px 0px white; }
 #filter-concerts.selected { border-color:#0fa61d; }
 
 .drawer-content { height:100%; overflow:auto; }
-#dropping-time { font-weight:normal; font-size:12pt; position:absolute; z-index:1000; width:200px; left:100%; padding:7px 5px; border-radius:5px; }
+#dropping-time { display:none; font-weight:normal; font-size:12pt; position:absolute; z-index:1000; width:200px; left:100%; padding:7px 5px; border-radius:5px; }
+#dropping-time.editing { display:block; }
 #timeline-content { position:relative; margin:5px; height:100%;}
 #timeline-content ul { list-style-type:none; padding:0 0 0 5px; }
 #timeline-hours-list {border-left:transparent solid 3px; height:100%; }
