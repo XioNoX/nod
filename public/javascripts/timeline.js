@@ -143,14 +143,25 @@ var timeline = {
   deleteActivity:function(activity) {
     var index = this.activities.indexOf(activity);
     console.log(index);
+    console.log("activity is "+activity.poi.label);
+    console.log("activity time is "+activity.beginTime);
     if(index != -1) { 
-      // Remove the item from the localstorage
-      var poiToDelete = localStorage.key(index);
-      localStorage.removeItem(poiToDelete);
-      
       this.activities.splice(index, 1);
       this.clear();
       this.display();
+    }
+
+    var found = false;
+    var i = 0;
+    while(!found && i < localStorage.length){
+      var key = localStorage.key(i);
+      var currentItem = JSON.parse(localStorage.getItem(key));
+      if(currentItem.poi.label == activity.poi.label && currentItem.beginTime == activity.beginTime){
+        localStorage.removeItem(key);
+        found = true;
+      } else {
+        i++;
+      }
     }
   },
   
@@ -159,7 +170,6 @@ var timeline = {
       console.log(localStorage,length);
       if(localStorage.length > 0){
         for(var i=0;i<localStorage.length;i++){
-          //console.log(localStorage.getItem("poi"+i));
           curPOI =JSON.parse(localStorage.getItem("poi"+i));
           this.activities.push(curPOI);
         }
