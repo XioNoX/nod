@@ -142,9 +142,6 @@ var timeline = {
 
   deleteActivity:function(activity) {
     var index = this.activities.indexOf(activity);
-    console.log(index);
-    console.log("activity is "+activity.poi.label);
-    console.log("activity time is "+activity.beginTime);
     if(index != -1) { 
       this.activities.splice(index, 1);
       this.clear();
