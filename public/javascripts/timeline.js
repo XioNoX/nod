@@ -79,6 +79,7 @@ var timeline = {
     if(!this.container) {return ;}
     this.clear();
     for(var i in this.activities) {
+                    //console.log(activity);
       var activity = this.activities[i];
       this.displayActivity(activity);
     }
@@ -126,17 +127,17 @@ var timeline = {
       "beginTime" : _beginTime,
       "endTime" : _endTime
     };
-    if(typeof localStorage != 'undefined'){
-     var poiToStore = JSON.stringify(lclPoi);
-     console.log(poiToStore);
-     
-     localStorage.setItem('poi'+localStorage.length,poiToStore);
-     console.log(localStorage.length);
-   } else {
-     alert('Monsieur vous devriez penser a changer de navigateur!!');
-   }
-    
     this.activities.push(lclPoi);
+
+    if(typeof localStorage != 'undefined'){
+      localStorage.setItem("userActivities", JSON.stringify(this.activities));
+     /*var poiToStore = JSON.stringify(lclPoi);
+     console.log(poiToStore);
+     localStorage.setItem('poi'+localStorage.length,poiToStore);
+     console.log(localStorage.length);*/
+    } else {
+      console.log("cannot save to local storage");
+    }
     this.displayActivity(lclPoi);
   },
 
@@ -147,8 +148,9 @@ var timeline = {
       this.clear();
       this.display();
     }
+    localStorage.setItem("userActivities", JSON.stringify(this.activities));
 
-    var found = false;
+    /*var found = false;
     var i = 0;
     while(!found && i < localStorage.length){
       var key = localStorage.key(i);
@@ -159,20 +161,26 @@ var timeline = {
       } else {
         i++;
       }
-    }
+    }*/
   },
   
   getElementsFromLocalStorage:function() {
-    if(typeof localStorage != 'undefined'){
-      console.log(localStorage,length);
+    if(typeof localStorage == 'undefined') return false;
+    this.activities = JSON.parse(localStorage.getItem("userActivities"));
+    if (this.activities == null) this.activities = [];
+      /*console.log(localStorage,length);
       if(localStorage.length > 0){
-        for(var i=0;i<localStorage.length;i++){
+        var count = 0;
+        var i = 0;
+        while(count < localStorage.length) {
           curPOI =JSON.parse(localStorage.getItem("poi"+i));
-          this.activities.push(curPOI);
+          if (curPOI) {
+            this.activities.push(curPOI);
+            count++;
+          }
+          i++;
         }
         return true;
-      }
-      return false;
-    }
+      }*/
   },
 };
