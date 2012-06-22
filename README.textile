@@ -1,55 +1,13 @@
-h1. Note sur les formulaires
+h1. Presentation du projet
 
-J'ai commencé à mettre en place un formulaire (tout con pour le moment) pour demander ce que le gars veut faire. Il y a plusieurs petites choses à savoir sur le formulaire que j'ai fais : 
-  * Ce formulaire envoie les données en asynchrone
-  * Vous allez me dire qu'il n'y a rien sur le formulaire qui dit qu'il est asynchrone (du genre un onsubmit=...)
-  * C'est là où est l'astuce, grace à HTML5, j'ai mis un attribut "data-remote=true" (explications simples sur data-stuff : http://html5doctor.com/html5-custom-data-attributes/).
+L'idée derrière Naonod (mot valise composé de Naoned, Nantes en Breton et NOD acronyme de Nantes Open Data) est née de la difficulté à avoir un aperçu efficace de ce que la ville offre. Que l'on soit un touriste visitant Nantes une poignée de jours, un résident voulant occuper un dimanche après midi pluvieux, ou encore un étudiant voulant faire la fête, la recherche d'informations est lente, pénible et incomplète. En effet, chacune de ces personnes devra consulter un grand nombre de sites internet comme par exemple les sites officiels des lieux, cartes, critiques, wikis, etc pour saisir quand tel concert se déroule, à quel endroit, pour quelle somme, si un restaurant n'est pas trop loin et est convenable pour un rendez-vous, ou pour planifier un journée « visite de musées » sans s’emmêler les pinceaux.
 
-  * Ainsi c'est un javascript non intrusif qui scanne tous les formulaire ayant le paramètre "data-remote" et fait ce qu'il faut pour qu'ils envoyent leurs données en asynchrone
-  * (Je me demande bien pourquoi j'ai utilisé une liste pour vous raconter ça !!)
-  * enfin il suffit de préciser l'id de la div qui va recevoir la réponse dans les options de la fonction js ajaxForm()
-  * c'est le que tout le business se passe, le controller doit calculer tous les trucs qui peuvent interesser le client (TODO)
-  * le resultat renvoyé peut être un rendu de page HTML (sans layout) qui sera alors inséré dans la div d'id référencée dans le ajaxForm.
-  
-
-h1. Architecture du projet
-
-dossier "public" : contient tous les fichiers statiques de l'application (css et javascripts) 
-dossier "controllers" : tous les contrôleurs de l'application 
-dossier "views" : toutes les vues de l'application. Le fichier "layout.html" est utilisé comme fond de toutes les autres vues et contient toute la mise en forme du site. Les autre fichiers ne servent qu'a afficher un type de donnée particulière.
-
-h1. API
-
-Quelques routes ont été mises en place à titre d'exemple. Tout se passe dans le index.php.
-
-Toutes les routes vers les éléments de l'api sont identifiées par l'url /api/<resource>/<<id>>, ça serait bien de respecter ce schéma. 
-
-Ensuite pour la gestion des actions, il faut que l'on mette en place un contrôleur différent par resource. Concrètement ça sé'organise de cette façon :
-  * l'action "index" du controller sert à récupérer toutes les ressources gérées par le contrôleur (par exemple pour le contrôleur "park" l'action "index" rend la liste des parks. 
-  * l'action "show" du controller sert à récupérer un park particulier identifié par son id passé en paramètre dans l'url.
-
- Voila je crois que tous les éléments sont là.
-
- Question ouverte : est ce que l'on gère plusieurs format différents (json et XML) ou un seul. Personnelement je penche plus pour le simple format json.
+Le site internet et l'application mobile Android du projet Noanod propose d'afficher clairement sur une carte les activités à faire le (ou les) jour(s) choisis correspondant uniquement à ce que l'utilisateur souhaite ainsi que ce qui est disponible. Les applications permettent alors d’avoir une visibilité complète et rapide sur tout ce qu’il est possible de faire sur la ville Nantes.
 
 
-h1. Création de la base de données et insertion de données exemples.
+h2. Installation et utilisation
 
-Les données sont tirés des différents fichiers csv disponibles sur le site open data de la ville de Nantes, et de données provenant de sites webs (notamment pour les bars et restaurants).
-A l'heure actuelle, il suffit, pour avoir une base fonctionnelle de : 
- - importer le fichier bdd-docs/insert/nod.sql.
- - importer le fichier bdd-docs/insert/all.sql (représentant les données POI, GPS, et contacts)
- - importer le fichier bdd-docs/insert/tan_stops.sql (représentant tous les arrêts de la TAN de la ville de Nantes)
+Simple. Vous avez seulement à aller sur www.naonod.com pour avoir un apercu du prototype de l'application. Vous pouvez également télécharger l'application mobile sur Google Play.
 
- <b> Remarques</b>
-Pour le moment, les données insérées permettent de donner à l'utilisateur des applications des poitns d'intérêts ainsi que la position de ces points. Cela représente donc une base fiable pour débuter.
-La base de données sera modifiée continuellement, de façon à rajouter des attributs plus précis, permettant d'obtenir de meilleurs informations sur les différents points d'intérêts, et ainsi donner à 
-l'utilisateur la meilleure journée et expérience possible.
 
-Il y aura donc plusieurs choses à faire pour tenir la base à jour: 
-	- Importer de temps à autres des fichiers sql qui consisteront à altérer la base de données.
-		- Dans le cas où l'on doit regénérer entièrement la base, le message présent dans le commit contenant la modification le précisera et l'API devra être modifiée en conséquence (idéalement en même temps que la modification committed de la base.
-
- <b> Contenu des tables.</b>
-On a à notre disposition pour le moment plus de 400 POI, avec les positions GPS associées (100 parcs, 200 lieux culturels, 30 bars et 20 restaurants environ).
-
+h3. Pour toute remarque ou suggestion, vous pouvez contacter l'équipe à l'adresse suivante : contact@naonod.com
